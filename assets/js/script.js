@@ -5,7 +5,19 @@
 
 
 // ------------------------------------------------------------------
-
+fetch("https://movie-database-imdb-alternative.p.rapidapi.com/?i=tt4154796&r=json", {
+	"method": "GET",
+	"headers": {
+		"x-rapidapi-key": "81de025dcfmsh7ff9da4b830ea4ep14da34jsnd7ce805e9e06",
+		"x-rapidapi-host": "movie-database-imdb-alternative.p.rapidapi.com"
+	}
+})
+.then(response => {
+	console.log(response);
+})
+.catch(err => {
+	console.error(err);
+});
 // ------------------------------------------------------------------
 
 
