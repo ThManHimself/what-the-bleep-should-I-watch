@@ -5,9 +5,16 @@
 
 
 // ------------------------------------------------------------------
-// importing API Key from key.js. (message Colton if you need help understand this)
-import { APIKEY } from './key.js';
-console.log(APIKEY);
+
+// // I do not know if I should figure out how to import/export this variable from another file for this project or if I should just keep it in this file. I spent way too much time trying to figure it out on my own. For now it is here, but I may figure out how to import it from another file at some point.
+
+// // importing API Key from key.js. (message Colton if you need help understand this)
+// import { APIKEY } from './key.js';
+// console.log(APIKEY);
+
+
+const APIKEY = '03af2fad82ab3f23750190542914caf8'
+
 // ------------------------------------------------------------------
 
 
@@ -24,7 +31,7 @@ console.log(APIKEY);
 
 // ------------------------------------------------------------------
 // // // // THIS IS AN EXAMPLE OF HOW TO FETCH MOVIES FROM THE DATABASE USING A SEARCH BAR
-// // // // WE MAY NOT NECESSARILY NEED THIS THROUGHOUT THE PROJECT, BUT IT IS HERE AS AN EXAMPLY OF ONE THING THAT CAN BE DONE
+// // // // WE MAY NOT NECESSARILY NEED THIS THROUGHOUT THE PROJECT, BUT IT IS HERE AS AN EXAMPLY OF ONE THING THAT **CAN** BE DONE
 // // // // THIS WAS TAKEN FROM THIS VIDEO: https://www.youtube.com/watch?v=bpHtxx_wmqw
 
 
