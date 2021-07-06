@@ -1,6 +1,8 @@
 // ------------------------------------------------------------------
 // // The idea of the commented lines are to separate the code into the different major sections. Doing it this way could help reduce confusion when 'git pulling'. 
 // // Try to keep things clean and use //comments on each and every file so the code is easy to read and the functionality of different code blocks are easy to understand.
+// // Leave 2 open lines between the bottom, closing commented seperator line and the top, openeing seperator line to make it extra clear that there things are seperated
+// // It could be helpful to add a label at the top of each section to make it easier to navigate through the project
 // ------------------------------------------------------------------
 
 
@@ -23,6 +25,36 @@ const APIKEY = '03af2fad82ab3f23750190542914caf8'
 // ------------------------------------------------------------------
 
 
+// ------------------------------------------------------------------
+
+// ------------------------------------------------------------------
+
+
+// ------------------------------------------------------------------
+
+// ------------------------------------------------------------------
+
+
+// ------------------------------------------------------------------
+
+// ------------------------------------------------------------------
+
+
+// ------------------------------------------------------------------
+
+// ------------------------------------------------------------------
+
+
+// ------------------------------------------------------------------
+
+// ------------------------------------------------------------------
+
+
+// ------------------------------------------------------------------
+
+// ------------------------------------------------------------------
+
+
 
 // ------------------------------------------------------------------
 
@@ -31,7 +63,7 @@ const APIKEY = '03af2fad82ab3f23750190542914caf8'
 
 // ------------------------------------------------------------------
 // // // // THIS IS AN EXAMPLE OF HOW TO FETCH MOVIES FROM THE DATABASE USING A SEARCH BAR
-// // // // WE MAY NOT NECESSARILY NEED THIS THROUGHOUT THE PROJECT, BUT IT IS HERE AS AN EXAMPLY OF ONE THING THAT **CAN** BE DONE
+// // // // WE MAY NOT NECESSARILY NEED THIS THROUGHOUT THE PROJECT, BUT IT IS HERE AS AN EXAMPLY OF ONE THING THAT CAN BE DONE USING TMDB API
 // // // // THIS WAS TAKEN FROM THIS VIDEO: https://www.youtube.com/watch?v=bpHtxx_wmqw
 
 
