@@ -78,7 +78,9 @@
 
 
 // ------------------------------------------------------------------
-
+// importing API Key from key.js. (message Colton if you need help understand this)
+import { APIKEY } from './key.js';
+console.log(APIKEY);
 
 // ------------------------------------------------------------------
 // // // // THIS IS AN EXAMPLE OF HOW TO FETCH MOVIES FROM THE DATABASE USING A SEARCH BAR
@@ -95,8 +97,6 @@
 //// 3. To fetch more details about a movie
 //// https://api.themoviedb.org/3/movie/<movie-id>?api_key=03af2fad82ab3f23750190542914caf8
 
-import { APIKEY } from './key.js';
-console.log(APIKEY);
 // let baseURL = 'https://api.themoviedb.org/3/';
 // let configData = null;
 // let baseImageURL = null;
