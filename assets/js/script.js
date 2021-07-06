@@ -5,86 +5,26 @@
 
 
 // ------------------------------------------------------------------
-// // fetch URL option 1 (retrieves a specific movie)
-// fetch("https://movie-database-imdb-alternative.p.rapidapi.com/?i=tt4154796&r=json", {
-// 	"method": "GET",
-// 	"headers": {
-// 		"x-rapidapi-key": "81de025dcfmsh7ff9da4b830ea4ep14da34jsnd7ce805e9e06",
-// 		"x-rapidapi-host": "movie-database-imdb-alternative.p.rapidapi.com"
-// 	}
-// })
-// .then (response => response.json())
-// .then(response => {
-//     console.log(response);
-// })
-// .catch(err => {
-//     console.error(err);
-// });
-
-// // fetch URL option 2 (retrieves input in json format)
-// fetch("https://movie-database-imdb-alternative.p.rapidapi.com/?r=json", {
-//     "method": "GET",
-// 	"headers": {
-//         "x-rapidapi-key": "81de025dcfmsh7ff9da4b830ea4ep14da34jsnd7ce805e9e06",
-// 		"x-rapidapi-host": "movie-database-imdb-alternative.p.rapidapi.com"
-// 	}
-// })
-// .then (response => response.json())
-// .then(response => {
-//     console.log(response);
-// })
-// .catch(err => {
-//     console.error(err);
-// });
-
-// // fetch URL option 3 (retrieves the database as a whole(I THINK???))
-// fetch("https://movie-database-imdb-alternative.p.rapidapi.com/", {
-//     "method": "GET",
-// 	"headers": {
-//         "x-rapidapi-key": "81de025dcfmsh7ff9da4b830ea4ep14da34jsnd7ce805e9e06",
-// 		"x-rapidapi-host": "movie-database-imdb-alternative.p.rapidapi.com"
-// 	}
-// })
-// .then (response => response.json())
-// .then(response => {
-//     console.log(response);
-// })
-// .catch(err => {
-//     console.error(err);
-// });
-// ------------------------------------------------------------------
-
-
-// ------------------------------------------------------------------
-// fetch URL option 1 (retrieves a specific movie)
-
-
-
-// fetch("https://api.themoviedb.org/3/movie/550?api_key=03af2fad82ab3f23750190542914caf8", {
-// 	"method": "GET",
-// 	"headers": {
-// 		"APIkey": "03af2fad82ab3f23750190542914caf8",
-// 		"x-rapidapi-host": "movie-database-imdb-alternative.p.rapidapi.com"
-// 	}
-// })
-// .then (response => response.json())
-// .then(response => {
-//     console.log(response);
-// })
-// .catch(err => {
-//     console.error(err);
-// });
-
-
-
-// ------------------------------------------------------------------
 // importing API Key from key.js. (message Colton if you need help understand this)
 import { APIKEY } from './key.js';
 console.log(APIKEY);
+// ------------------------------------------------------------------
+
+
+// ------------------------------------------------------------------
+
+// ------------------------------------------------------------------
+
+
+
+// ------------------------------------------------------------------
+
+// ------------------------------------------------------------------
+
 
 // ------------------------------------------------------------------
 // // // // THIS IS AN EXAMPLE OF HOW TO FETCH MOVIES FROM THE DATABASE USING A SEARCH BAR
-// // // // THIS IS **NOT** WHAT WE ARE GOING TO BE USING FOR THIS PROJECT
+// // // // WE MAY NOT NECESSARILY NEED THIS THROUGHOUT THE PROJECT, BUT IT IS HERE AS AN EXAMPLY OF ONE THING THAT CAN BE DONE
 // // // // THIS WAS TAKEN FROM THIS VIDEO: https://www.youtube.com/watch?v=bpHtxx_wmqw
 
 
@@ -131,12 +71,4 @@ console.log(APIKEY);
 // }
 
 // document.addEventListener('DOMContentLoaded', getConfig);
-
-
-
-// ------------------------------------------------------------------
-
-
-// ------------------------------------------------------------------
-
 // ------------------------------------------------------------------
