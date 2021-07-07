@@ -15,6 +15,7 @@
 // console.log(APIKEY);
 
 // // Example of an API request: 
+// 550 = id#550 = 'fight club'
 // https://api.themoviedb.org/3/movie/550?api_key=03af2fad82ab3f23750190542914caf8
 
 const movieAPIKey = '03af2fad82ab3f23750190542914caf8'
