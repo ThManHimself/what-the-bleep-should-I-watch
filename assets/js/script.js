@@ -14,8 +14,12 @@
 // import { APIKEY } from './key.js';
 // console.log(APIKEY);
 
+// // Example of an API request: 
+// https://api.themoviedb.org/3/movie/550?api_key=03af2fad82ab3f23750190542914caf8
 
 const APIKEY = '03af2fad82ab3f23750190542914caf8'
+const base_uri = "http://api.themoviedb.org/3/"
+const images_uri = "http://image.tmdb.org/t/p/"
 
 // ------------------------------------------------------------------
 
