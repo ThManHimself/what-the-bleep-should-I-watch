@@ -28,37 +28,41 @@ const images_url = "http://image.tmdb.org/t/p/"
 
 
 // ------------------------------------------------------------------
-fetch("https://api.themoviedb.org/3/certification/movie/list?api_key=03af2fad82ab3f23750190542914caf8&certifications_country=US")
-.then(response => response.json())
-.then(response => {
-    const certifications = response.certifications.US
-    let mainContainer = document.getElementById("myData");
-    for (var i = 0; i < certifications.length; i++) { 
-        // 
-        var div = document.createElement("div");
-        div.innerHTML = 'Rating: ' + certifications[i].certification
-        
-        // append each rating to our page
-        mainContainer.appendChild(div)
-        console.log(certifications[i]);
-    }
-    console.log(response);
-    return response.certifications
-})
-.catch(err => {
-    console.error(err);
-});
-
-
-
-// ------------------------------------------------------------------
-
-
-// ------------------------------------------------------------------
-// ------------------------------------------------------------------
+function getCertifications() {
+    fetch("https://api.themoviedb.org/3/certification/movie/list?api_key=03af2fad82ab3f23750190542914caf8&certifications_country=US")
+    .then(response => response.json())
+    .then(response => {
+        const certifications = response.certifications.US
+        let mainContainer = document.getElementById("myData");
+        for (var i = 0; i < certifications.length; i++) { 
+            // 
+            var div = document.createElement("div");
+            div.innerHTML = 'Rating: ' + certifications[i].certification
+            
+            // append each rating to our page
+            mainContainer.appendChild(div)
+            console.log(certifications[i]);
+        }
+        console.log(response);
+        return response.certifications
+    })
+    .catch(err => {
+        console.error(err);
+    });
+}
+getCertifications()
 
 // ------------------------------------------------------------------
 
+
+// ------------------------------------------------------------------
+// onClick button
+// ------------------------------------------------------------------
+
+// ------------------------------------------------------------------
+// SPLICESPLICESPLICESPLICESPLICE SPLICE
+// SLICE SLICE SLICE SLICE SLICE SLICE SLICE SLICE 
+// sort()
 // ------------------------------------------------------------------
 
 
