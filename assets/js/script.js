@@ -18,23 +18,44 @@
 // 550 = id#550 = 'fight club'
 // https://api.themoviedb.org/3/movie/550?api_key=03af2fad82ab3f23750190542914caf8
 
-const movieAPIKey = '03af2fad82ab3f23750190542914caf8'
 const timesAPIKey = 'Dp1ap8UZalnuCrhZYtZkLMUe6fqNRYXv'
-const base_uri = "http://api.themoviedb.org/3/"
-const images_uri = "http://image.tmdb.org/t/p/"
+
+const movieAPIKey = '03af2fad82ab3f23750190542914caf8'
+const base_url = "http://api.themoviedb.org/3/"
+const images_url = "http://image.tmdb.org/t/p/"
 
 // ------------------------------------------------------------------
 
 
 // ------------------------------------------------------------------
+fetch("https://api.themoviedb.org/3/certification/movie/list?api_key=03af2fad82ab3f23750190542914caf8&certifications_country=US")
+.then(response => response.json())
+.then(response => {
+    const certifications = response.certifications.US
+    let mainContainer = document.getElementById("myData");
+    for (var i = 0; i < certifications.length; i++) { 
+        // 
+        var div = document.createElement("div");
+        div.innerHTML = 'Rating: ' + certifications[i].certification
+        
+        // append each rating to our page
+        mainContainer.appendChild(div)
+        console.log(certifications[i]);
+    }
+    console.log(response);
+    return response.certifications
+})
+.catch(err => {
+    console.error(err);
+});
+
+
 
 // ------------------------------------------------------------------
 
 
 // ------------------------------------------------------------------
-
 // ------------------------------------------------------------------
-
 
 // ------------------------------------------------------------------
 
