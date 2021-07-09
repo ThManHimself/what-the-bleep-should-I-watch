@@ -20,6 +20,7 @@
 
 const timesAPIKey = 'Dp1ap8UZalnuCrhZYtZkLMUe6fqNRYXv'
 
+const streamingAPIKey = '0e490c0bb2msh27474734de7d723p106e9ajsn139beffcdbea'
 const movieAPIKey = '03af2fad82ab3f23750190542914caf8'
 const base_url = "http://api.themoviedb.org/3/"
 const images_url = "http://image.tmdb.org/t/p/"
@@ -65,7 +66,8 @@ const images_url = "http://image.tmdb.org/t/p/"
 // sort()
 // ------------------------------------------------------------------
 
-
+// watchmode api for stteaming services call
+    
 // ------------------------------------------------------------------
 
 // ------------------------------------------------------------------
