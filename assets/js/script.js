@@ -1,8 +1,5 @@
 // ------------------------------------------------------------------
-// // The idea of the commented lines are to separate the code into the different major sections. Doing it this way could help reduce confusion when 'git pulling'. 
-// // Try to keep things clean and use //comments on each and every file so the code is easy to read and the functionality of different code blocks are easy to understand.
-// // Leave 2 open lines between the bottom, closing commented seperator line and the top, openeing seperator line to make it extra clear that there things are seperated
-// // It could be helpful to add a label at the top of each section to make it easier to navigate through the project
+
 // ------------------------------------------------------------------
 // // .methods() that could be beneficial
 // splice
