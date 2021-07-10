@@ -51,44 +51,55 @@ var checkGenres = function(){
 // ------------------------------------------------------------------
 // pull list of movies and display top list of movies
 var movieList = [];
-var getMovies = function(pageNum) { 
-    fetch(base_url + 'discover/movie?api_key=' + movieAPIKey + '&page=' + pageNum)
-    .then(response => response.json())
-    .then(function(response) { 
-        for (var i = 0; i < 20; i++){ 
-            var selectedMovie = response.results[i]
-            console.log(selectedMovie);
+var getMovies = (pageNum = 1) => { 
+    fetch(`${base_url}discover/movie?api_key=${movieAPIKey}&page=${pageNum}`)
+    .then(res => res.json())
+    .then(data => {
+        const movies = data.results;
 
-            for (var j = 0; j < selectedMovie.genre_ids.length; j++) {
-                // change if statement to check if this id is in genreIds list
-                if (selectedMovie.genre_ids[j])
-                    movieList.push(selectedMovie)
-            
-            if (movieList.length === 5)
-                break;
-            }
+        for (const movie of movies) {
+            console.log(movie.title)
         }
-        // debugger
-        // if (movieList.length < 5) { 
-        //     if (pageNum <= 500)
-        //         getMovies(pageNum++);
-        // }
-        console.log(movieList);
+    });
 
-        // // if request was successful
-        // if(response.ok) { 
-        //     response.json().then(function(data) { 
-        //         // save list of movies
-        //         console.log();
-        //     })
-        // }
-        // else { 
-        //     // !!! ALERT IS TEMPORARY !!! (replace with a modal)
-        //     alert("There was a problem with your request!");
-        // }
-    })
+    // .then(response => response.json())
+    // .then(function(response) { 
+    //     for (var i = 0; i < 20; i++){ 
+    //         console.log("getMovies")
+    //         var selectedMovie = response.results[i]
+    //         console.log(selectedMovie);
+
+    //         for (var j = 0; j < selectedMovie.genre_ids.length; j++) {
+    //             // change if statement to check if this id is in genreIds list
+    //             if (selectedMovie.genre_ids[j])
+    //                 movieList.push(selectedMovie)
+            
+    //         if (movieList.length === 5)
+    //             break;
+    //         }
+    //     }
+    //     // debugger
+    //     // if (movieList.length < 5) { 
+    //     //     if (pageNum <= 500)
+    //     //         getMovies(pageNum++);
+    //     // }
+    //     // console.log(movieList);
+
+    //     // // if request was successful
+    //     // if(response.ok) { 
+    //     //     response.json().then(function(data) { 
+    //     //         // save list of movies
+    //     //         console.log();
+    //     //     })
+    //     // }
+    //     // else { 
+    //     //     // !!! ALERT IS TEMPORARY !!! (replace with a modal)
+    //     //     alert("There was a problem with your request!");
+    //     // }
+    // })
 }
-getMovies(1);
+document.getElementById("getMovies").addEventListener("click", getMovies);
+
 // ------------------------------------------------------------------
 // add button that calls checkGenres() THEN getMovies()
 
