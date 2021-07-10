@@ -12,7 +12,9 @@ var ratingContainerEl = document.querySelector("#rating-container")
 const timesAPIKey = 'Dp1ap8UZalnuCrhZYtZkLMUe6fqNRYXv'
 // ------------------------------------------------------------------
 
+const streamingAPIKey = '0e490c0bb2msh27474734de7d723p106e9ajsn139beffcdbea'
 const movieAPIKey = '03af2fad82ab3f23750190542914caf8'
+const streamingUrl = 'https://watchmode.p.rapidapi.com/list-titles/'
 const base_url = "http://api.themoviedb.org/3/"
 const images_url = "http://image.tmdb.org/t/p/"
 
@@ -73,6 +75,48 @@ var displayRatings = function(certifications) {
 };
 // ------------------------------------------------------------------
 
+// Add event listener to button click to query WatchMode for Streaming Services
+
+// watchmode api for stteaming services call
+// let sourceSearch = document.getElementById("search-criteria");
+// function getSources() {
+// fetch("https://watchmode.p.rapidapi.com/sources/?types=sub%2Cfree&regions=US%2CCA", {
+// 	"method": "GET",
+// 	"headers": {
+// 		"x-rapidapi-key": "0e490c0bb2msh27474734de7d723p106e9ajsn139beffcdbea",
+// 		"x-rapidapi-host": "watchmode.p.rapidapi.com"
+// 	}
+// })
+// .then(response => {
+// 	response.json();
+// })
+
+// .then(response => {
+//     const sources = response.sources.US
+// .catch(err => {
+// 	console.error(err);
+// });
+// console.log(getSources)
+// getSources()
+// } 
+// ------------------------------------------------------------------
+// Create element by id to return streaming service search results inside
+// the div container
+// ------------------------------------------------------------------
+
+
+
+// ------------------------------------------------------------------
+
+// ------------------------------------------------------------------
+
+
+
+// ------------------------------------------------------------------
+
+// ------------------------------------------------------------------
+
+
 
 // ------------------------------------------------------------------
 
@@ -88,11 +132,6 @@ var displayRatings = function(certifications) {
 
 // ------------------------------------------------------------------
 
-// ------------------------------------------------------------------
-
-
-
-// ------------------------------------------------------------------
 
 // ------------------------------------------------------------------
 
@@ -106,17 +145,10 @@ var displayRatings = function(certifications) {
 
 // ------------------------------------------------------------------
 
-
+<<<<<<< HEAD
 // ------------------------------------------------------------------
-
-
-
+=======
+// document.addEventListener('DOMContentLoaded', getConfig);
 // ------------------------------------------------------------------
-
-// ------------------------------------------------------------------
-
-
-
-// ------------------------------------------------------------------
-
-// ------------------------------------------------------------------
+)}
+>>>>>>> feature/rating-api
