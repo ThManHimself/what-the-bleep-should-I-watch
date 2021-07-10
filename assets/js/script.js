@@ -43,10 +43,11 @@ var getMovieData = function(info) {
 // if statement for each checkbox
 // put id in genre list if the box is checked
 var genreIds = []
-var checkGenres = function(){
-
-}
-
+// var checkGenres = function(){
+//     var checkedGenres = document.getElementsByClassName("genreChbox");
+//     var result = [];
+//     for (var i = 0; )
+// }
 
 // ------------------------------------------------------------------
 // pull list of movies and display top list of movies
@@ -61,18 +62,22 @@ var getMovies = function(pageNum) {
 
             for (var j = 0; j < selectedMovie.genre_ids.length; j++) {
                 // change if statement to check if this id is in genreIds list
-                if (selectedMovie.genre_ids[j])
+                if (genreIds.includes(selectedMovie.genre_ids[j]))
+                // if (selectedMovie.genre_ids[j])
                     movieList.push(selectedMovie)
             
             if (movieList.length === 5)
                 break;
             }
         }
-        // debugger
-        // if (movieList.length < 5) { 
-        //     if (pageNum <= 500)
-        //         getMovies(pageNum++);
-        // }
+        if (movieList.length < 5) { 
+            if (pageNum <= 5) {
+                pageNum++
+                getMovies(pageNum);
+            } else { 
+                console.log('END');
+            }
+        }
         console.log(movieList);
 
         // // if request was successful
@@ -90,13 +95,20 @@ var getMovies = function(pageNum) {
 }
 getMovies(1);
 // ------------------------------------------------------------------
+
+var submitBtn = function(){ 
+    // check rating not definded yet
+    checkRating();
+    checkGenres();
+    getMovies();
+}
+
 // add button that calls checkGenres() THEN getMovies()
 
 
 
 // ------------------------------------------------------------------
 
-// if (genreIds.includes(selectedMovie.genre_ids[j]))
 
 
 // ------------------------------------------------------------------
