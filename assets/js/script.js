@@ -9,7 +9,6 @@ var ratingContainerEl = document.querySelector("#rating-container")
 
 // ------------------------------------------------------------------
 
-const timesAPIKey = 'Dp1ap8UZalnuCrhZYtZkLMUe6fqNRYXv'
 // ------------------------------------------------------------------
 
 const movieAPIKey = '03af2fad82ab3f23750190542914caf8'
@@ -38,44 +37,94 @@ var getMovieData = function(info) {
 }
 
 // ------------------------------------------------------------------
+// check genres
+// if statement for each checkbox
+// put id in genre list if the box is checked
+var genreIds = []
+var checkGenres = function(){
 
-// ------------------------------------------------------------------
-// have to find out how to pull the certifications info into this function
-// display the rating choices on the survey
-var displayRatings = function(certifications) { 
-    for (var i = 0; i < certifications.length; i++) { 
-        // create a 'p' element to hold the label elements for the checkboxes/ratings
-        var certificationsEl = document.createElement("p");
-        certificationsEl.classList = "col s3"
-
-        // create a label element to hold the input and span elements
-        var labelEL = document.createElement("label");
-
-        // append label to container
-        certificationsEl.appendChild(labelEL);
-
-        // create an input and span element to hold the rating and checkbox
-            // checkbox
-            var checkboxEl = document.createElement("input")
-            checkboxEl.setAttribute("type", "checkbox")
-        
-            // span
-            var ratingEl = document.createElement("span");
-            ratingEl.textContent = certifications[i].value
-        
-        // append ratingEL and checkboxEL to labelEL
-        labelEL.appendChild(checkboxEl);
-        labelEL.appendChild(ratingEl);
-
-        // append to #rating-container 
-        ratingContainerEl.appendChild(certificationsEl);
-    }
-};
-// ------------------------------------------------------------------
+}
 
 
 // ------------------------------------------------------------------
+// pull list of movies and display top list of movies
+var movieList = [];
+var getMovies = function(pageNum) { 
+    fetch(base_url + 'discover/movie?api_key=' + movieAPIKey + '&page=' + pageNum)
+    .then(response => response.json())
+    .then(function(response) { 
+        for (var i = 0; i < 20; i++){ 
+            var selectedMovie = response.results[i]
+            console.log(selectedMovie);
 
+            for (var j = 0; j < selectedMovie.genre_ids.length; j++) {
+                // change if statement to check if this id is in genreIds list
+                if (selectedMovie.genre_ids[j])
+                    movieList.push(selectedMovie)
+            
+            if (movieList.length === 5)
+                break;
+            }
+        }
+        // debugger
+        // if (movieList.length < 5) { 
+        //     if (pageNum <= 500)
+        //         getMovies(pageNum++);
+        // }
+        console.log(movieList);
+
+        // // if request was successful
+        // if(response.ok) { 
+        //     response.json().then(function(data) { 
+        //         // save list of movies
+        //         console.log();
+        //     })
+        // }
+        // else { 
+        //     // !!! ALERT IS TEMPORARY !!! (replace with a modal)
+        //     alert("There was a problem with your request!");
+        // }
+    })
+}
+getMovies(1);
+// ------------------------------------------------------------------
+// add button that calls checkGenres() THEN getMovies()
+
+
+
+// ------------------------------------------------------------------
+
+// if (genreIds.includes(selectedMovie.genre_ids[j]))
+
+
+// ------------------------------------------------------------------
+
+
+
+// ------------------------------------------------------------------
+// function getCertifications() {
+//     fetch("https://api.themoviedb.org/3/certification/movie/list?api_key=03af2fad82ab3f23750190542914caf8&certifications_country=US")
+//     .then(response => response.json())
+//     .then(response => {
+//         const certifications = response.certifications.US
+//         let mainContainer = document.getElementById("myData");
+//         for (var i = 0; i < certifications.length; i++) { 
+//             // create div element with movie rating in it
+//             var div = document.createElement("div");
+//             div.innerHTML = 'Rating: ' + certifications[i].certification
+
+//             // append each rating to our page
+//             mainContainer.appendChild(div);
+//             console.log(certifications[i]);
+//         }
+//         console.log(response);
+//         return response.certifications
+//     })
+//     .catch(err => {
+//         console.error(err);
+//     });
+// }
+// getCertifications()
 // ------------------------------------------------------------------
 
 
