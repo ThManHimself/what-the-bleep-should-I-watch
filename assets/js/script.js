@@ -67,30 +67,33 @@ const images_url = "http://image.tmdb.org/t/p/"
 // sort()
 // ------------------------------------------------------------------
 
+// Add event listener to button click to query WatchMode for Streaming Services
+
 // watchmode api for stteaming services call
-let sourceSearch = document.getElementById("search-criteria");
-function getSources() {
-fetch("https://watchmode.p.rapidapi.com/sources/?types=sub%2Cfree&regions=US%2CCA", {
-	"method": "GET",
-	"headers": {
-		"x-rapidapi-key": "0e490c0bb2msh27474734de7d723p106e9ajsn139beffcdbea",
-		"x-rapidapi-host": "watchmode.p.rapidapi.com"
-	}
-})
-.then(response => {
-	response.json();
-})
+// let sourceSearch = document.getElementById("search-criteria");
+// function getSources() {
+// fetch("https://watchmode.p.rapidapi.com/sources/?types=sub%2Cfree&regions=US%2CCA", {
+// 	"method": "GET",
+// 	"headers": {
+// 		"x-rapidapi-key": "0e490c0bb2msh27474734de7d723p106e9ajsn139beffcdbea",
+// 		"x-rapidapi-host": "watchmode.p.rapidapi.com"
+// 	}
+// })
+// .then(response => {
+// 	response.json();
+// })
 
-.then(response => {
-    const sources = response.sources.US
-.catch(err => {
-	console.error(err);
-});
-console.log(getSources)
-getSources()
-} 
+// .then(response => {
+//     const sources = response.sources.US
+// .catch(err => {
+// 	console.error(err);
+// });
+// console.log(getSources)
+// getSources()
+// } 
 // ------------------------------------------------------------------
-
+// Create element by id to return streaming service search results inside
+// the div container
 // ------------------------------------------------------------------
 
 
