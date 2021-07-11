@@ -1,9 +1,6 @@
 // ------------------------------------------------------------------
 var ratingContainerEl = document.querySelector("#rating-container")
-<<<<<<< HEAD
-=======
 
->>>>>>> feature/rating-api
 
 // ------------------------------------------------------------------
 // // .methods() that could be beneficial
@@ -56,7 +53,6 @@ var checkGenres = function(){
 // pull list of movies and display top list of movies
 var movieList = [];
 var getMovies = (pageNum = 1) => { 
-<<<<<<< HEAD
     fetch(`${base_url}discover/movie?api_key=${movieAPIKey}&page=${pageNum}`)
     .then(res => res.json())
     .then(data => {
@@ -67,29 +63,11 @@ var getMovies = (pageNum = 1) => {
         }
     });
 
-=======
-    // 
-    // TODO: get ratings
-    // TODO: get genres
-
-    // TODO: update API call with ratings and genres
-    fetch(`${base_url}discover/movie?api_key=${movieAPIKey}&page=${pageNum}`)
-    .then(res => res.json())
-    .then(data => {
-        displayMovies(data.results);
-        console.log(data.results);
-    });
-}
->>>>>>> feature/rating-api
     // .then(response => response.json())
     // .then(function(response) { 
     //     for (var i = 0; i < 20; i++){ 
     //         console.log("getMovies")
-<<<<<<< HEAD
     //         var selectedMovie = response.results[i]
-=======
-    //         var selectedMovie = data.results[i]
->>>>>>> feature/rating-api
     //         console.log(selectedMovie);
 
     //         for (var j = 0; j < selectedMovie.genre_ids.length; j++) {
@@ -102,20 +80,11 @@ var getMovies = (pageNum = 1) => {
     //         }
     //     }
     //     // debugger
-<<<<<<< HEAD
     //     // if (movieList.length < 5) { 
     //     //     if (pageNum <= 500)
     //     //         getMovies(pageNum++);
     //     // }
     //     // console.log(movieList);
-=======
-    //     if (movieList.length < 5) { 
-    //         if (pageNum <= 500)
-    //             getMovies(pageNum++);
-    //     }
-    //     console.log(movieList);
-  
->>>>>>> feature/rating-api
 
     //     // // if request was successful
     //     // if(response.ok) { 
@@ -129,20 +98,8 @@ var getMovies = (pageNum = 1) => {
     //     //     alert("There was a problem with your request!");
     //     // }
     // })
-<<<<<<< HEAD
 }
 document.getElementById("getMovies").addEventListener("click", getMovies);
-=======
-
-// const displayMovies = (movies) => {
-    
-//     // TODO: update innerHTML to display movie list
-// }
-
-// document.getElementById("getMovies").addEventListener("click", getMovies);
-
-
->>>>>>> feature/rating-api
 
 // ------------------------------------------------------------------
 // add button that calls checkGenres() THEN getMovies()
@@ -184,7 +141,6 @@ document.getElementById("getMovies").addEventListener("click", getMovies);
 // }
 // getCertifications()
 // watchmode api for stteaming services call
-<<<<<<< HEAD
 // let sourceSearch = document.getElementById("search-criteria");
 // function getSources() {
 // fetch("https://watchmode.p.rapidapi.com/sources/?types=sub%2Cfree&regions=US%2CCA", {
@@ -206,7 +162,6 @@ document.getElementById("getMovies").addEventListener("click", getMovies);
 // console.log(getSources)
 // getSources()
 // } 
-=======
 function getSources() {
     fetch("https://watchmode.p.rapidapi.com/title/3173903/sources/", {
         "method": "GET",
@@ -274,7 +229,6 @@ console.log(streamingData)
 
 
 
->>>>>>> feature/rating-api
 // ------------------------------------------------------------------
 
 // ------------------------------------------------------------------
@@ -299,31 +253,6 @@ console.log(streamingData)
 // ------------------------------------------------------------------
 
 
-
-// ------------------------------------------------------------------
-
-// ------------------------------------------------------------------
-
-
-
-<<<<<<< HEAD
-// ------------------------------------------------------------------
-
-
-=======
->>>>>>> feature/rating-api
-// ------------------------------------------------------------------
-
-// ------------------------------------------------------------------
-// document.addEventListener('DOMContentLoaded', getConfig);
-// ------------------------------------------------------------------
-document.getElementById("movie-submit-btn").addEventListener("click", function(e) {
-    e.preventDefault();
-    console.log('i been clicked')
-    let query = "Rocky"; //grab actual value from form
-    let tvOrMovie = "movie"; //grab actual value from form
-
-<<<<<<< HEAD
 
 // ------------------------------------------------------------------
 
@@ -336,12 +265,15 @@ document.getElementById("movie-submit-btn").addEventListener("click", function(e
 // ------------------------------------------------------------------
 // document.addEventListener('DOMContentLoaded', getConfig);
 // ------------------------------------------------------------------
+document.getElementById("movie-submit-btn").addEventListener("click", function(e) {
+    e.preventDefault();
+    console.log('i been clicked')
+    let query = "Rocky"; //grab actual value from form
+    let tvOrMovie = "movie"; //grab actual value from form
 
-=======
     getEntertainmentStreamData(query, tvOrMovie)
 
 });
 
 
 
->>>>>>> feature/rating-api
