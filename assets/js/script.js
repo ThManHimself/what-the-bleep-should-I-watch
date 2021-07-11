@@ -1,32 +1,129 @@
 // ------------------------------------------------------------------
-// // The idea of the commented lines are to separate the code into the different major sections. Doing it this way could help reduce confusion when 'git pulling'. 
-// // Try to keep things clean and use //comments on each and every file so the code is easy to read and the functionality of different code blocks are easy to understand.
-// // Leave 2 open lines between the bottom, closing commented seperator line and the top, openeing seperator line to make it extra clear that there things are seperated
-// // It could be helpful to add a label at the top of each section to make it easier to navigate through the project
-// ------------------------------------------------------------------
+var ratingContainerEl = document.querySelector("#rating-container")
 
 
 // ------------------------------------------------------------------
+// // .methods() that could be beneficial
+// splice
+// slice
+// sort
 
-// // I do not know if I should figure out how to import/export this variable from another file for this project or if I should just keep it in this file. I spent way too much time trying to figure it out on my own. For now it is here, but I may figure out how to import it from another file at some point.
+// ------------------------------------------------------------------
 
-// // importing API Key from key.js. (message Colton if you need help understand this)
-// import { APIKEY } from './key.js';
-// console.log(APIKEY);
-
-// // Example of an API request: 
-// 550 = id#550 = 'fight club'
-// https://api.themoviedb.org/3/movie/550?api_key=03af2fad82ab3f23750190542914caf8
-
-const timesAPIKey = 'Dp1ap8UZalnuCrhZYtZkLMUe6fqNRYXv'
+// ------------------------------------------------------------------
 
 const streamingAPIKey = '0e490c0bb2msh27474734de7d723p106e9ajsn139beffcdbea'
 const movieAPIKey = '03af2fad82ab3f23750190542914caf8'
-const streamingUrl = 'https://watchmode.p.rapidapi.com'
+const streamingUrl = 'https://watchmode.p.rapidapi.com/list-titles/'
 const base_url = "http://api.themoviedb.org/3/"
 const images_url = "http://image.tmdb.org/t/p/"
 
 // ------------------------------------------------------------------
+// function to get whatever data we need from the API
+var getMovieData = function(info) { 
+    // needs work
+    var apiUrl = base_url + 
+
+    fetch(apiUrl).then(function(response) { 
+        // if request was successful
+        if(response.ok) { 
+            response.json().then(function(data) { 
+                // pass response data to dom function
+                displayRatings(data);
+            })
+        }
+        else { 
+            // !!! ALERT IS TEMPORARY !!! (replace with a modal)
+            alert("There was a problem with your request!");
+        }
+    });
+}
+
+// ------------------------------------------------------------------
+// check genres
+// if statement for each checkbox
+// put id in genre list if the box is checked
+var genreIds = []
+var checkGenres = function(){
+
+}
+
+
+// ------------------------------------------------------------------
+// pull list of movies and display top list of movies
+var movieList = [];
+var getMovies = (pageNum = 1) => { 
+    // 
+    // TODO: get ratings
+    // TODO: get genres
+
+    // TODO: update API call with ratings and genres
+    fetch(`${base_url}discover/movie?api_key=${movieAPIKey}&page=${pageNum}`)
+    .then(res => res.json())
+    .then(data => {
+        displayMovies(data.results);
+        console.log(data.results);
+    });
+}
+    // .then(response => response.json())
+    // .then(function(response) { 
+    //     for (var i = 0; i < 20; i++){ 
+    //         console.log("getMovies")
+    //         var selectedMovie = data.results[i]
+    //         console.log(selectedMovie);
+
+    //         for (var j = 0; j < selectedMovie.genre_ids.length; j++) {
+    //             // change if statement to check if this id is in genreIds list
+    //             if (selectedMovie.genre_ids[j])
+    //                 movieList.push(selectedMovie)
+            
+    //         if (movieList.length === 5)
+    //             break;
+    //         }
+    //     }
+    //     // debugger
+    //     if (movieList.length < 5) { 
+    //         if (pageNum <= 500)
+    //             getMovies(pageNum++);
+    //     }
+    //     console.log(movieList);
+  
+
+    //     // // if request was successful
+    //     // if(response.ok) { 
+    //     //     response.json().then(function(data) { 
+    //     //         // save list of movies
+    //     //         console.log();
+    //     //     })
+    //     // }
+    //     // else { 
+    //     //     // !!! ALERT IS TEMPORARY !!! (replace with a modal)
+    //     //     alert("There was a problem with your request!");
+    //     // }
+    // })
+
+// const displayMovies = (movies) => {
+    
+//     // TODO: update innerHTML to display movie list
+// }
+
+// document.getElementById("getMovies").addEventListener("click", getMovies);
+
+
+
+// ------------------------------------------------------------------
+// add button that calls checkGenres() THEN getMovies()
+
+
+
+// ------------------------------------------------------------------
+
+// if (genreIds.includes(selectedMovie.genre_ids[j]))
+
+
+// ------------------------------------------------------------------
+
+// Add event listener to button click to query WatchMode for Streaming Services
 
 
 // ------------------------------------------------------------------
@@ -37,12 +134,12 @@ const images_url = "http://image.tmdb.org/t/p/"
 //         const certifications = response.certifications.US
 //         let mainContainer = document.getElementById("myData");
 //         for (var i = 0; i < certifications.length; i++) { 
-//             // 
+//             // create div element with movie rating in it
 //             var div = document.createElement("div");
 //             div.innerHTML = 'Rating: ' + certifications[i].certification
-            
+
 //             // append each rating to our page
-//             mainContainer.appendChild(div)
+//             mainContainer.appendChild(div);
 //             console.log(certifications[i]);
 //         }
 //         console.log(response);
@@ -53,56 +150,73 @@ const images_url = "http://image.tmdb.org/t/p/"
 //     });
 // }
 // getCertifications()
-
-// ------------------------------------------------------------------
-
-
-// ------------------------------------------------------------------
-// onClick button
-// ------------------------------------------------------------------
-
-// ------------------------------------------------------------------
-// SPLICESPLICESPLICESPLICESPLICE SPLICE
-// SLICE SLICE SLICE SLICE SLICE SLICE SLICE SLICE 
-// sort()
-// ------------------------------------------------------------------
-
-// Add event listener to button click to query WatchMode for Streaming Services
-
 // watchmode api for stteaming services call
-// let sourceSearch = document.getElementById("search-criteria");
-var sources= [];
-fetch("https://watchmode.p.rapidapi.com/sources/?types=sub%2Cfree&regions=US%2CCA", {
-	"method": "GET",
-	"headers": {
-		"x-rapidapi-key": "f9b6ff2d83mshfdf3d16f8b26babp1de6a3jsn6c228711f379",
-		"x-rapidapi-host": "watchmode.p.rapidapi.com"
-	}
-})
-.then(response => {
-	response.json();
-    console.log(response);
-})
-.catch(err => {
-	console.error(err);
-});
-
-// } 
+function getSources() {
+    fetch("https://watchmode.p.rapidapi.com/title/3173903/sources/", {
+        "method": "GET",
+        "headers": {
+            "regions": "US",
+            "x-rapidapi-key": "f9b6ff2d83mshfdf3d16f8b26babp1de6a3jsn6c228711f379",
+            "x-rapidapi-host": "watchmode.p.rapidapi.com"
+        }
+    })
+    .then(response => {
+        console.log(response);
+    })
+    .catch(err => {
+        console.error(err);
+    });
+}
+    // getSources();
 // ------------------------------------------------------------------
 // Create element by id to return streaming service search results inside
 // the div container
 // ------------------------------------------------------------------
 
+async function getEntertainmentStreamData (query, type) {
+    console.log('getentertainment is invoked')
+    
+    const response = await fetch(`https://watchmode.p.rapidapi.com/search/?search_field=name&search_value=${query}&types=${type}`, {
+	"method": "GET",
+	"headers": {
+		"x-rapidapi-key": "0e490c0bb2msh27474734de7d723p106e9ajsn139beffcdbea",
+		"x-rapidapi-host": "watchmode.p.rapidapi.com"
+	}
+})
+.then(response => {
+	return response.json()
+
+})
+.catch(err => {
+	console.error(err);
+});
+console.log('got the id successfully', response)
+    let id = response["title_results"][0].id;
+    let newURL = `https://watchmode.p.rapidapi.com/title/${id}/sources/`
+    const streamingData =await fetch(newURL, {
+	"method": "GET",
+	"headers": {
+		"regions": "US",
+		"x-rapidapi-key": "0e490c0bb2msh27474734de7d723p106e9ajsn139beffcdbea",
+		"x-rapidapi-host": "watchmode.p.rapidapi.com"
+	}
+})
+.then(response => {
+	return response.json()
+})
+.catch(err => {
+	console.error(err);
+});
+console.log(streamingData)
+
+
+}
 
 // ------------------------------------------------------------------
 
 // ------------------------------------------------------------------
 
 
-// ------------------------------------------------------------------
-
-// ------------------------------------------------------------------
-
 
 // ------------------------------------------------------------------
 
@@ -115,54 +229,40 @@ fetch("https://watchmode.p.rapidapi.com/sources/?types=sub%2Cfree&regions=US%2CC
 // ------------------------------------------------------------------
 
 
+
 // ------------------------------------------------------------------
-// // // // THIS IS AN EXAMPLE OF HOW TO FETCH MOVIES FROM THE DATABASE USING A SEARCH BAR
-// // // // WE MAY NOT NECESSARILY NEED THIS THROUGHOUT THE PROJECT, BUT IT IS HERE AS AN EXAMPLY OF ONE THING THAT CAN BE DONE USING TMDB API
-// // // // THIS WAS TAKEN FROM THIS VIDEO: https://www.youtube.com/watch?v=bpHtxx_wmqw
+
+// ------------------------------------------------------------------
 
 
-//// 1. To get the config data like image base URLs
-//// https://api.themoviedb.org/3/configuration?api_key=03af2fad82ab3f23750190542914caf8
 
-//// 2. To fetch a list of movies based on a <keyword>
-//// https://api.themoviedb.org/3/search/movie?api_key=03af2fad82ab3f23750190542914caf8&query=<keyword>
+// ------------------------------------------------------------------
 
-//// 3. To fetch more details about a movie
-//// https://api.themoviedb.org/3/movie/<movie-id>?api_key=03af2fad82ab3f23750190542914caf8
 
-// let baseURL = 'https://api.themoviedb.org/3/';
-// let configData = null;
-// let baseImageURL = null;
+// ------------------------------------------------------------------
 
-// let getConfig = function() { 
-//     let url = "".concat(baseURL, 'configuration?api_key=', APIKEY);
-//     fetch(url)
-//     .then((result)=> { 
-//         return result.json();
-//     })
-//     .then((data)=> { 
-//         baseImageURL = data.images.secure_base_url;
-//         configData = data.images;
-//         console.log('config', data);
-//         console.log('config fetched');
-//         runSearch('jaws')
-//     })
-//     .catch(function(err) { 
-//         alert(err);
-//     });
-// }
 
-// let runSearch = function(keyword) { 
-//     let url = "".concat(baseURL, 'search/movie?api_key=', APIKEY, '&query=', keyword);
-//     fetch(url)
-//     .then(result=>result.json())
-//     .then((date)=> { 
-//         // process the returned data
-//         document.getElementById('output').innerHTML = JSON.stringify(data, null, 4);     //// NO ELEMENT WITH THE ID OF 'output'
-//         // work with results array...
-//     })
-// }
 
+// ------------------------------------------------------------------
+
+// ------------------------------------------------------------------
+
+
+
+// ------------------------------------------------------------------
+
+// ------------------------------------------------------------------
 // document.addEventListener('DOMContentLoaded', getConfig);
 // ------------------------------------------------------------------
+document.getElementById("movie-submit-btn").addEventListener("click", function(e) {
+    e.preventDefault();
+    console.log('i been clicked')
+    let query = "Rocky"; //grab actual value from form
+    let tvOrMovie = "movie"; //grab actual value from form
+
+    getEntertainmentStreamData(query, tvOrMovie)
+
+});
+
+
 
