@@ -27,13 +27,26 @@ var movieList = [];
 
 var selectedRatings = function() { 
     
+    var ratingArr = [];
+    var checkboxes = document.getElementsByClassName('ratingCheckbox')
+    
+    for (var i = 0; i < checkboxes.length; i++) { 
+        if (checkboxes[i].checked) { 
+            ratingArr.push(checkboxes[i].id);
+            console.log(checkboxes[i].id);
+        }
+    }
+
+    var ratingIds = ratingArr.join('')
+    console.log(ratingIds);
+    return ratingIds;
 };
 
 var selectedGenres = function () {
     
     var genreArr = [];
     var checkboxes = document.getElementsByClassName('genreCheckbox')
-    // console.log(checkboxes);
+    console.log(checkboxes);
 
     for (var i = 0; i < checkboxes.length; i++) { 
         if (checkboxes[i].checked) { 
@@ -75,7 +88,7 @@ var getMovies = function (pageNum = 1, rating) {
             console.log(response);
             for (var i = 0; i < 5; i++) {
                 var selectedMovie = response.results[i];
-                console.log(selectedMovie);
+                // console.log(selectedMovie);
             }
             // console.log(movieList);
         });
