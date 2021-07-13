@@ -169,13 +169,14 @@
 
           </form>
         </div>
-        <label for="movie-title-search">Search for streaming services:</label>
+        <label for="movie-title-search">Search here to find streaming services that display the movie you choose:</label>
         <input type="search"  id="title-search" name="q"
                 aria-label="Search Watchmode for Content">
         <button id="movie-submit-btn">Search</button>
 
-        <div id='ssContainer' class='ssContainer'>
-    
+        <div class='ssContainer'>
+            <h4 class="collection-header">Recommended Movies</h4>
+            <ol id='movieContainer' class="collection"></ol>
         </div>
     
     <!-- <script src="./assets/js/key/key.js"></script> -->

@@ -1,15 +1,4 @@
-// ------------------------------------------------------------------
-var ratingContainerEl = document.querySelector("#rating-container");
-
-// ------------------------------------------------------------------
-// // .methods() that could be beneficial
-// splice
-// slice
-// sort
-
-// ------------------------------------------------------------------
-
-// ------------------------------------------------------------------
+var movieContainerEl = document.getElementById("movieContainer");
 
 const streamingAPIKey = "0e490c0bb2msh27474734de7d723p106e9ajsn139beffcdbea";
 const movieAPIKey = "03af2fad82ab3f23750190542914caf8";
@@ -17,12 +6,7 @@ const streamingUrl = "https://watchmode.p.rapidapi.com/list-titles/";
 const base_url = "http://api.themoviedb.org/3/";
 const images_url = "http://image.tmdb.org/t/p/";
 
-// ------------------------------------------------------------------
 
-// ------------------------------------------------------------------
-// check genres
-// if statement for each checkbox
-// put id in genre list if the box is checked
 var movieList = [];
 
 var selectedRatings = function() { 
@@ -60,25 +44,52 @@ var selectedGenres = function () {
     return genreIds;
 };
 
-// ------------------------------------------------------------------
 // pull list of movies and display top list of movies
 var getMovies = function (pageNum = 1) {
     const rating = selectedRatings();
     const genre = selectedGenres();
     fetch(`${base_url}discover/movie?api_key=${movieAPIKey}&page=${pageNum}&with_genres=${genre}&certification_country=US&certification=${rating}`)
-        .then((response) => response.json())
-        .then(function (response) {
-            console.log(response);
-            for (var i = 0; i < 5; i++) {
-                var selectedMovie = response.results[i];
-                // console.log(selectedMovie);
-            }
+    .then((response) => response.json())
+    .then(function (response) {
+        console.log(response);
+        for (var i = 0; i < 5; i++) {
+            var selectedMovie = response.results[i];
+            
+            // add 'selectedMovie to movieList array
+            movieList.push(selectedMovie)
             console.log(movieList);
-        });
+        }
+        return movieList;
+    });
 };
+
+var displayRecommendations = function() { 
+    // check if api returned any movies
+    if (movieList.length === 0) { 
+        movieContainerEl.textContent = "No movies fir your search parameters!";
+        return;
+    }
+    
+    // clear content from last search
+    movieContainerEl.textContent = "";
+    
+    // 
+    
+    // <li class="collection-item"></li>
+    for (var i = 0; i < movieList.length; i++) { 
+        // create a span element to hold movie name
+        var titleEl = document.createElement("li");
+        
+        // formnat movie name
+        var movieName = movieList[i].title;
+        
+        // put movie name into h3 element
+        titleEl.textContent = movieName;
+    }
+}
+
 document.getElementById("getMovies").addEventListener("click", getMovies);
 
-// ------------------------------------------------------------------
 function getSources() {
     fetch("https://watchmode.p.rapidapi.com/title/3173903/sources/", {
         method: "GET",
