@@ -1,4 +1,5 @@
 var movieContainerEl = document.getElementById("movieContainer");
+var searchInputEl = document.getElementById("title-search");
 
 const streamingAPIKey = "0e490c0bb2msh27474734de7d723p106e9ajsn139beffcdbea";
 const movieAPIKey = "03af2fad82ab3f23750190542914caf8";
@@ -105,12 +106,12 @@ function getSources() {
             "x-rapidapi-host": "watchmode.p.rapidapi.com",
         },
     })
-        .then((response) => {
-            console.log(response);
-        })
-        .catch((err) => {
-            console.error(err);
-        });
+    .then((response) => {
+        console.log(response);
+    })
+    .catch((err) => {
+        console.error(err);
+    });
 }
 
 async function getEntertainmentStreamData(query, type) {
@@ -157,6 +158,9 @@ async function getEntertainmentStreamData(query, type) {
     console.log(streamingServicesUS);
 }
 
+var displaySreamingPlatforms = function() { 
+    var availablePlatforms = searchInputEl.value
+}
 
 
 document.getElementById("movie-submit-btn").addEventListener("click", function (e) {
