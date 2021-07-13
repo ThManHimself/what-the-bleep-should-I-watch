@@ -62,27 +62,10 @@ var selectedGenres = function () {
 
 // ------------------------------------------------------------------
 // pull list of movies and display top list of movies
-var getMovies = function (pageNum = 1, rating) {
-    var genre = selectedGenres();
-    fetch(`${base_url}discover/movie?api_key=${movieAPIKey}&page=${pageNum}&with_genres=${genre}`)
-        // .then(res => res.json())
-        // .then(data => {
-        //     var movies = data.results;
-        //     console.log(movies);
-        //     console.log(movies[0].title);
-        //     // create element for movie title
-        //     var movieTitle = document.createElement('h2');
-        //     movieTitle.textContent = movies[0].title
-
-        //     var movieContainer = document.getElementById('ssContainer')
-        //     movieContainer.appendChild(movieTitle)
-        //     // append
-
-        //     // for () {
-        //     //     console.log(movie.title)
-        //     // }
-        // });
-
+var getMovies = function (pageNum = 1) {
+    const rating = selectedRatings();
+    const genre = selectedGenres();
+    fetch(`${base_url}discover/movie?api_key=${movieAPIKey}&page=${pageNum}&with_genres=${genre}&certification_country=US&certification=${rating}`)
         .then((response) => response.json())
         .then(function (response) {
             console.log(response);
@@ -90,7 +73,7 @@ var getMovies = function (pageNum = 1, rating) {
                 var selectedMovie = response.results[i];
                 // console.log(selectedMovie);
             }
-            // console.log(movieList);
+            console.log(movieList);
         });
 };
 document.getElementById("getMovies").addEventListener("click", getMovies);
