@@ -135,13 +135,14 @@ async function getEntertainmentStreamData(query, type) {
         .catch((err) => {
             console.error(err);
         });
-    console.log(streamingData);
+    console.log(streamingData.filter(movie=>movie.region.toLowerCase()=="us"));
 }
 
 document.getElementById("movie-submit-btn").addEventListener("click", function (e) {
         e.preventDefault();
         console.log("i been clicked");
-        let query = "Rocky"; //grab actual value from form
+        let query = document.getElementById('title-search').value || "Rocky";
+        console.dir(query) //grab actual value from form
         let tvOrMovie = "movie"; //grab actual value from form
 
         getEntertainmentStreamData(query, tvOrMovie);
