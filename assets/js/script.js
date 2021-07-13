@@ -129,21 +129,23 @@ async function getEntertainmentStreamData(query, type) {
             "x-rapidapi-host": "watchmode.p.rapidapi.com",
         },
     })
-        .then((response) => {
-            return response.json();
-        })
-        .catch((err) => {
-            console.error(err);
-        });
-    console.log(streamingData.filter(movie=>movie.region.toLowerCase()=="us"));
+    .then((response) => {
+        return response.json();
+    })
+    .catch((err) => {
+        console.error(err);
+    });
+    var streamingServicesUS = streamingData
+        .filter(movie=>movie.region=="US")
+        .filter(movie=>movie.type=="sub")
+    console.log(streamingServicesUS);
 }
 
 document.getElementById("movie-submit-btn").addEventListener("click", function (e) {
-        e.preventDefault();
-        console.log("i been clicked");
-        let query = document.getElementById('title-search').value || "Rocky";
-        console.dir(query) //grab actual value from form
-        let tvOrMovie = "movie"; //grab actual value from form
-
-        getEntertainmentStreamData(query, tvOrMovie);
-    });
+    e.preventDefault();
+    console.log("i been clicked");
+    let query = document.getElementById('title-search').value || "Rocky";
+    console.dir(query) //grab actual value from form
+    let tvOrMovie = "movie"; //grab actual value from form
+    getEntertainmentStreamData(query, tvOrMovie);
+});
