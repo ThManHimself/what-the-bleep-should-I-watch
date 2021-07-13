@@ -257,12 +257,10 @@ console.log(streamingData)
 document.getElementById("movie-submit-btn").addEventListener("click", function(e) {
     e.preventDefault();
     console.log('i been clicked')
-    let query = "Rocky"; //grab actual value from form
+    let query ="rocky"; //grab actual value from form
     let tvOrMovie = "movie"; //grab actual value from form
 
-    getEntertainmentStreamData(query, tvOrMovie)
+    getEntertainmentStreamData(query, tvOrMovie);
 
 });
-
-
-
+document.querySelector().value
