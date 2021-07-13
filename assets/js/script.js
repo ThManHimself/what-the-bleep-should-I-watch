@@ -6,8 +6,9 @@ const streamingUrl = "https://watchmode.p.rapidapi.com/list-titles/";
 const base_url = "http://api.themoviedb.org/3/";
 const images_url = "http://image.tmdb.org/t/p/";
 
+// TMDB API
 
-var movieList = [];
+let movieList = [];
 
 var selectedRatings = function() { 
     
@@ -30,7 +31,6 @@ var selectedGenres = function () {
     
     var genreArr = [];
     var checkboxes = document.getElementsByClassName('genreCheckbox')
-    console.log(checkboxes);
 
     for (var i = 0; i < checkboxes.length; i++) { 
         if (checkboxes[i].checked) { 
@@ -59,36 +59,41 @@ var getMovies = function (pageNum = 1) {
             movieList.push(selectedMovie)
             console.log(movieList);
         }
-        return movieList;
+        displayRecommendations();
     });
 };
 
 var displayRecommendations = function() { 
     // check if api returned any movies
-    if (movieList.length === 0) { 
-        movieContainerEl.textContent = "No movies fir your search parameters!";
+    if (movieList.length == 0) { 
+        movieContainerEl.textContent = "No movies fit your search parameters!";
         return;
     }
     
     // clear content from last search
     movieContainerEl.textContent = "";
     
-    // 
-    
     // <li class="collection-item"></li>
+    // create and append li element to ol
     for (var i = 0; i < movieList.length; i++) { 
         // create a span element to hold movie name
         var titleEl = document.createElement("li");
-        
+        // add Materialize styling to li
+        titleEl.classList = "collection-item"
         // formnat movie name
         var movieName = movieList[i].title;
         
-        // put movie name into h3 element
+        // put movie name into li element
         titleEl.textContent = movieName;
+        
+        // append li to ol container
+        movieContainerEl.appendChild(titleEl)
     }
 }
 
 document.getElementById("getMovies").addEventListener("click", getMovies);
+
+// watchmode API
 
 function getSources() {
     fetch("https://watchmode.p.rapidapi.com/title/3173903/sources/", {
@@ -151,6 +156,8 @@ async function getEntertainmentStreamData(query, type) {
         .filter(movie=>movie.type=="sub")
     console.log(streamingServicesUS);
 }
+
+
 
 document.getElementById("movie-submit-btn").addEventListener("click", function (e) {
     e.preventDefault();
