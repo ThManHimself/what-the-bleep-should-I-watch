@@ -7,25 +7,26 @@ var ratedPG = document.getElementById("PG")
 var ratedPG13 = document.getElementById("PG-13")
 var ratedR = document.getElementById("R")
 
-// genre element variables
-var Action = document.getElementById("28");
-var Adventure = document.getElementById("12");
-var animation = document.getElementById("16");
-var Comedy = document.getElementById("35");
-var Crime = document.getElementById("80");
-var Documentary = document.getElementById("99");
-var Drama = document.getElementById("18");
-var Family = document.getElementById("10751");
-var Fantasy = document.getElementById("14");
-var history = document.getElementById("36");
-var Horror = document.getElementById("27");
-var Music = document.getElementById("10402");
-var Mystery = document.getElementById("9648");
-var Romance = document.getElementById("10749");
-var ScienceFiction = document.getElementById("878");
-var Thriller = document.getElementById("53");
-var War = document.getElementById("10752");
-var Western = document.getElementById("37");
+// // genre element variables
+// // This will be used in further iterations of the application
+// var Action = document.getElementById("28");
+// var Adventure = document.getElementById("12");
+// var animation = document.getElementById("16");
+// var Comedy = document.getElementById("35");
+// var Crime = document.getElementById("80");
+// var Documentary = document.getElementById("99");
+// var Drama = document.getElementById("18");
+// var Family = document.getElementById("10751");
+// var Fantasy = document.getElementById("14");
+// var history = document.getElementById("36");
+// var Horror = document.getElementById("27");
+// var Music = document.getElementById("10402");
+// var Mystery = document.getElementById("9648");
+// var Romance = document.getElementById("10749");
+// var ScienceFiction = document.getElementById("878");
+// var Thriller = document.getElementById("53");
+// var War = document.getElementById("10752");
+// var Western = document.getElementById("37");
 
 const streamingAPIKey = "0e490c0bb2msh27474734de7d723p106e9ajsn139beffcdbea";
 const movieAPIKey = "03af2fad82ab3f23750190542914caf8";
@@ -129,94 +130,54 @@ var resetMovieList = function() {
 // retrieve and display movies when the button is clicked
 document.getElementById("getMovies").addEventListener("click", getMovies);
 // collect input data and save it into local storage
-var timesSelectedG = "";
-var timesSelectedPG = "";
-var timesSelectedPG13 = "";
-var timesSelectedR = "";
+var ratingsData = [];
 document.getElementById("getMovies").addEventListener("click", function(event) { 
     event.preventDefault();
-    
-    // array to store in localStorage
-    var formData = { 
-        ratingsData: ["G: " + timesSelectedG, "PG: " + timesSelectedPG, "PG-13: " + timesSelectedPG13, "R: " + timesSelectedR],
-
-        // genreData: ["Action: " + timesSelected28, "Adventure: " + timesSelected12, "Animation: " + timesSelected16, "Comedy: " + timesSelected35, "Crime: " + timesSelected80, "Documentary: " + timesSelected99, "Drama: " + timesSelected18, "Family: " + timesSelected10751, "Fantasy: " + timesSelected14, "History: " + timesSelected36, "Horror: " + timesSelected27, "Music: " + timesSelected10402, "Mystery: " + timesSelected9648, "Romance: " + timesSelected10749, "ScienceFiction: " + timesSelected878, "Thriller: " + timesSelected53, "War: " + timesSelected10752, "Western: " + timesSelected37]
-    }
     var incrementCollectedData = function() { 
-        debugger
+        var timesSelectedG = localStorage.getItem('G');
+        var timesSelectedPG = localStorage.getItem('PG');
+        var timesSelectedPG13 = localStorage.getItem('PG13');
+        var timesSelectedR = localStorage.getItem('R');
+
         // ratings
         if (ratedG.checked) { 
-            if (timesSelectedG == "") { 
+            if (timesSelectedG == null) { 
                 timesSelectedG = 1;
-                JSON.stringify(timesSelectedG);
-                console.log(timesSelectedG);
-            } else if (timesSelectedG != "") { 
+            } else { 
                 timesSelectedG++;
             }
         }
         if (ratedPG.checked) { 
-            if (timesSelectedPG == "") { 
+            if (timesSelectedPG == null) { 
                 timesSelectedPG = 1;
-            } else if (timesSelectedPG != "") { 
+            } else { 
                 timesSelectedPG++;
             }
         }
         if (ratedPG13.checked) { 
-            if (timesSelectedPG13 == "") { 
+            if (timesSelectedPG13 == null) { 
                 timesSelectedPG13 = 1;
-            } else if (timesSelectedPG13 != "") { 
+            } else { 
                 timesSelectedPG13++;
             }
         }
         if (ratedR.checked) { 
-            if (timesSelectedR == "") { 
+            if (timesSelectedR == null) { 
                 timesSelectedR = 1;
-            } else if (timesSelectedR != "") { 
+            } else { 
                 timesSelectedR++;
             }
         }
 
-        // genres
-
+        // saving the data to localStorage
+        localStorage.setItem('G', JSON.stringify(timesSelectedG));
+        localStorage.setItem('G', JSON.stringify(timesSelectedPG));
+        localStorage.setItem('G', JSON.stringify(timesSelectedPG13));
+        localStorage.setItem('G', JSON.stringify(timesSelectedR));
     }
     incrementCollectedData();
-    console.log(formData.ratingsData);
 
-    // stringify data
-    let collectedData = JSON.stringify(formData)
-    let timesSelectedG = "";
-
-
-    
-    // save them in localStorage
-    localStorage.setItem("Collected Data", collectedData);
-    console.log(localStorage);
 });
-// // rating element variables
-// var ratedG = document.getElementById("G")
-// var ratedPG = document.getElementById("PG")
-// var ratedPG13 = document.getElementById("PG13")
-// var ratedR = document.getElementById("R")
-
-// // genre element variables
-// var Action = document.getElementById("28");
-// var Adventure = document.getElementById("12");
-// var animation = document.getElementById("16");
-// var Comedy = document.getElementById("35");
-// var Crime = document.getElementById("80");
-// var Documentary = document.getElementById("99");
-// var Drama = document.getElementById("18");
-// var Family = document.getElementById("10751");
-// var Fantasy = document.getElementById("14");
-// var history = document.getElementById("36");
-// var Horror = document.getElementById("27");
-// var Music = document.getElementById("10402");
-// var Mystery = document.getElementById("9648");
-// var Romance = document.getElementById("10749");
-// var ScienceFiction = document.getElementById("878");
-// var Thriller = document.getElementById("53");
-// var War = document.getElementById("10752");
-// var Western = document.getElementById("37");
 
 // watchmode API
 
