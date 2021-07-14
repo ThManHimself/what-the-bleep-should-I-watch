@@ -1,5 +1,9 @@
 var movieContainerEl = document.getElementById("movieContainer");
 var searchInputEl = document.getElementById("title-search");
+var ratingEl = document.getElementsByClassName("ratingEl");
+var genreEl = document.getElementsByClassName("genreEl");
+console.log(ratingEl);
+console.log(genreEl);
 
 const streamingAPIKey = "0e490c0bb2msh27474734de7d723p106e9ajsn139beffcdbea";
 const movieAPIKey = "03af2fad82ab3f23750190542914caf8";
@@ -66,14 +70,14 @@ var getMovies = function (pageNum = 1) {
 };
 
 var displayRecommendations = function() { 
+    // clear content from last search
+    movieContainerEl.textContent = "";
+
     // check if api returned any movies
     if (movieList.length == 0) { 
         movieContainerEl.textContent = "No movies fit your search parameters!";
         return;
     }
-    
-    // clear content from last search
-    movieContainerEl.textContent = "";
     
     // <li class="collection-item"></li>
     // create and append li element to ol
@@ -93,7 +97,9 @@ var displayRecommendations = function() {
     }
 }
 
+// retrieve and display movies when the button is clicked
 document.getElementById("getMovies").addEventListener("click", getMovies);
+// collect input data and save it into local storage
 
 // watchmode API
 
@@ -210,9 +216,3 @@ var dataCounter = [
         }
     }
 ];
-// count number of times each rating/genre 
-// save that information to localStorage
-var savedData = function() { 
-
-    
-}
