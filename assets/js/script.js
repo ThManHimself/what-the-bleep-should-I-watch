@@ -87,7 +87,7 @@ var getMovies = function (pageNum = 1) {
             movieContainerEl.textContent = "No movies fit your search parameters!";
             return;
         }
-        for (var i = 0; i < 5; i++) {
+        for (var i = 0; i < 10; i++) {
             var selectedMovie = response.results[i];
             
             // add 'selectedMovie to movieList array
