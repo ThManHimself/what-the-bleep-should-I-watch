@@ -1,5 +1,13 @@
+const streamingAPIKey = "0e490c0bb2msh27474734de7d723p106e9ajsn139beffcdbea";
+const movieAPIKey = "03af2fad82ab3f23750190542914caf8";
+const streamingUrl = "https://watchmode.p.rapidapi.com/list-titles/";
+const base_url = "http://api.themoviedb.org/3/";
+const images_url = "http://image.tmdb.org/t/p/";
+
+
+// TMDB API
+
 var movieContainerEl = document.getElementById("movieContainer");
-var searchInputEl = document.getElementById("title-search");
 
 // rating element variables
 var ratedG = document.getElementById("G")
@@ -27,14 +35,6 @@ var ratedR = document.getElementById("R")
 // var Thriller = document.getElementById("53");
 // var War = document.getElementById("10752");
 // var Western = document.getElementById("37");
-
-const streamingAPIKey = "0e490c0bb2msh27474734de7d723p106e9ajsn139beffcdbea";
-const movieAPIKey = "03af2fad82ab3f23750190542914caf8";
-const streamingUrl = "https://watchmode.p.rapidapi.com/list-titles/";
-const base_url = "http://api.themoviedb.org/3/";
-const images_url = "http://image.tmdb.org/t/p/";
-
-// TMDB API
 
 let movieList = [];
 
@@ -120,7 +120,8 @@ var displayRecommendations = function() {
     }
 }
 
-// removes all items from movieList to get a fresh search - used in getMovies so the user does not need to refresh to remove the displayed movies from a previous search
+// removes all items from movieList to get a fresh search, 
+// used in getMovies so the user does not need to refresh to remove the displayed movies from a previous search
 var resetMovieList = function() { 
     while (movieList.length) { 
         movieList.pop();
@@ -185,7 +186,14 @@ document.getElementById("getMovies").addEventListener("click", function(event) {
     incrementCollectedData();
     console.log(ratingsData);
 });
+
+
 // watchmode API
+
+var searchInputEl = document.getElementById("title-search");
+var serviceEl = document.getElementById("streamingServices");
+var noResults = document.getElementById("noResults")
+
 
 function getSources() {
     fetch("https://watchmode.p.rapidapi.com/title/3173903/sources/", {
@@ -226,6 +234,7 @@ async function getEntertainmentStreamData(query, type) {
         console.error(err);
     });
     console.log("got the id successfully", response);
+    console.log(response);
     let id = response["title_results"][0].id;
     let newURL = `https://watchmode.p.rapidapi.com/title/${id}/sources/`;
     const streamingData = await fetch(newURL, {
@@ -243,20 +252,79 @@ async function getEntertainmentStreamData(query, type) {
     .catch((err) => {
         console.error(err);
     });
-    var streamingServicesUS = streamingData
+    var webStreamingServices = streamingData
         .filter(movie=>movie.region=="US")
         .filter(movie=>movie.type=="sub")
-        console.log(streamingServicesUS);
-    var webURL = streamingServicesUS
-        .filter(movie=>movie.web_url)
-    console.log(webURL.value);
+    
+    console.log(webStreamingServices);
+    console.log(webStreamingServices[0]);
+    
+    
+    // display streaming services to the page
+    var displaySreamingPlatforms = function() { 
+        
+        // if there are no streaming services for searched movie
+        if (!webStreamingServices[0]) { 
+            noResults.textContent = "This movie is not on any streaming service. (Check for typos)";
+        }
+        
+        // clear ol from last search
+        serviceEl.textContent = "";
+
+        for (var i = 0; i < webStreamingServices.length; i++) {
+
+            // clear 'noResults'
+            noResults.textContent = "";
+
+            // create anchor element
+            var a = document.createElement('a');
+            a.classList = "white-text"
+
+            // create the text for anchor element
+            var link = document.createTextNode("This is link");
+
+            // append the text node to anchor element
+            a.appendChild(link);
+
+            // set the title
+            a.title = "This is Link";
+
+            // set the href property
+            a.href = webStreamingServices[i].web_url;
+
+            
+            
+            // create li to put inside of the ol
+            var serviceContainer = document.createElement('li');
+            // add Materialize styling to li
+            serviceContainer.classList = "collection-item teal";
+
+            
+
+            // format service url
+            var serviceName = webStreamingServices[i].web_url;
+
+            // put service url into li
+            a.textContent = serviceName;
+
+
+
+            // append the anchor element to li
+            serviceContainer.appendChild(a);
+            
+            // append li to div
+            serviceEl.appendChild(serviceContainer);
+        }
+    }
+    displaySreamingPlatforms();
+
+    // clear inputs in 'where to watch' container
+    while (webStreamingServices.length) { 
+        webStreamingServices.pop();
+    }
 }
 
-var displaySreamingPlatforms = function() { 
-    var availablePlatforms = searchInputEl.value
-}
-
-
+// when 'search' button is clicked
 document.getElementById("movie-submit-btn").addEventListener("click", function (e) {
     e.preventDefault();
     console.log("i been clicked");
