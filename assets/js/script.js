@@ -134,10 +134,10 @@ var ratingsData = [];
 document.getElementById("getMovies").addEventListener("click", function(event) { 
     event.preventDefault();
     var incrementCollectedData = function() { 
-        var timesSelectedG = localStorage.getItem('G');
-        var timesSelectedPG = localStorage.getItem('PG');
-        var timesSelectedPG13 = localStorage.getItem('PG13');
-        var timesSelectedR = localStorage.getItem('R');
+        var timesSelectedG = JSON.parse(localStorage.getItem('G'));
+        var timesSelectedPG = JSON.parse(localStorage.getItem('PG'));
+        var timesSelectedPG13 = JSON.parse(localStorage.getItem('PG-13'));
+        var timesSelectedR = JSON.parse(localStorage.getItem('R'));
 
         // ratings
         if (ratedG.checked) { 
@@ -171,14 +171,20 @@ document.getElementById("getMovies").addEventListener("click", function(event) {
 
         // saving the data to localStorage
         localStorage.setItem('G', JSON.stringify(timesSelectedG));
-        localStorage.setItem('G', JSON.stringify(timesSelectedPG));
-        localStorage.setItem('G', JSON.stringify(timesSelectedPG13));
-        localStorage.setItem('G', JSON.stringify(timesSelectedR));
+        localStorage.setItem('PG', JSON.stringify(timesSelectedPG));
+        localStorage.setItem('PG-13', JSON.stringify(timesSelectedPG13));
+        localStorage.setItem('R', JSON.stringify(timesSelectedR));
+
+        // remove the old data from before and keep only
+        // the most up to date data in the ratingsData array (used for furture versions of WTBSIW)
+        if (ratingsData.length > 0) { 
+            ratingsData.pop()
+        }
+        ratingsData.push("G: " + timesSelectedG, "PG: " + timesSelectedPG, "PG-13: " + timesSelectedPG13, "R: " + timesSelectedR)
     }
     incrementCollectedData();
-
+    console.log(ratingsData);
 });
-
 // watchmode API
 
 function getSources() {
