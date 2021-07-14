@@ -52,6 +52,7 @@ var getMovies = function (pageNum = 1) {
     fetch(`${base_url}discover/movie?api_key=${movieAPIKey}&page=${pageNum}&with_genres=${genre}&certification_country=US&certification=${rating}`)
     .then((response) => response.json())
     .then(function (response) {
+        // localStorage.setItem(response)
         console.log(response);
         for (var i = 0; i < 5; i++) {
             var selectedMovie = response.results[i];
@@ -77,11 +78,11 @@ var displayRecommendations = function() {
     // <li class="collection-item"></li>
     // create and append li element to ol
     for (var i = 0; i < movieList.length; i++) { 
-        // create a span element to hold movie name
+        // create a li element to hold movie name
         var titleEl = document.createElement("li");
         // add Materialize styling to li
         titleEl.classList = "collection-item"
-        // formnat movie name
+        // format movie name
         var movieName = movieList[i].title;
         
         // put movie name into li element
@@ -155,7 +156,10 @@ async function getEntertainmentStreamData(query, type) {
     var streamingServicesUS = streamingData
         .filter(movie=>movie.region=="US")
         .filter(movie=>movie.type=="sub")
-    console.log(streamingServicesUS);
+        console.log(streamingServicesUS);
+    var webURL = streamingServicesUS
+        .filter(movie=>movie.web_url)
+    console.log(webURL.value);
 }
 
 var displaySreamingPlatforms = function() { 
@@ -171,3 +175,44 @@ document.getElementById("movie-submit-btn").addEventListener("click", function (
     let tvOrMovie = "movie"; //grab actual value from form
     getEntertainmentStreamData(query, tvOrMovie);
 });
+
+
+// array to store in localStorage
+var dataCounter = [
+    {
+        ratings: 
+        {
+            G: '',
+            PG: '',
+            PG13: '',
+            R: '',
+        },
+        genres: 
+        {
+            Action: '',
+            Adventure: '',
+            Animation: '',
+            Comedy: '',
+            Crime: '',
+            Documentary: '',
+            Drama: '',
+            Family: '',
+            Fantasy: '',
+            History: '',
+            Horror: '',
+            Music: '',
+            Mystery: '',
+            Romance: '',
+            ScienceFiction: '',
+            Thriller: '',
+            War: '',
+            Western: '',
+        }
+    }
+];
+// count number of times each rating/genre 
+// save that information to localStorage
+var savedData = function() { 
+
+    
+}
