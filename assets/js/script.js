@@ -191,7 +191,7 @@ document.getElementById("getMovies").addEventListener("click", function(event) {
         // genre variables
         
         
-        // when a rating is checked on the page,
+        // when a genre is checked on the page,
         // increment the value by 1 when the 'Get Movies' button is clicked.
         // If it has never been checked before,
         // make the value 1 because it is the first time it was checked
@@ -201,7 +201,7 @@ document.getElementById("getMovies").addEventListener("click", function(event) {
 
 
         // remove the old data from before and keep only
-        // the most up to date data in the ratingsData array
+        // the most up to date data in the genresData array
         // (used for furture versions of WTBSIW)
 
     }
