@@ -134,12 +134,17 @@ var ratingsData = [];
 document.getElementById("getMovies").addEventListener("click", function(event) { 
     event.preventDefault();
     var incrementCollectedData = function() { 
+
+        // ratings variables
         var timesSelectedG = JSON.parse(localStorage.getItem('G'));
         var timesSelectedPG = JSON.parse(localStorage.getItem('PG'));
         var timesSelectedPG13 = JSON.parse(localStorage.getItem('PG-13'));
         var timesSelectedR = JSON.parse(localStorage.getItem('R'));
 
-        // ratings
+        // when a rating is checked on the page,
+        // increment the value by 1 when the 'Get Movies' button is clicked.
+        // If it has never been checked before,
+        // make the value 1 because it is the first time it was checked
         if (ratedG.checked) { 
             if (timesSelectedG == null) { 
                 timesSelectedG = 1;
@@ -169,22 +174,62 @@ document.getElementById("getMovies").addEventListener("click", function(event) {
             }
         }
 
-        // saving the data to localStorage
+        // saving the ratings data to localStorage
         localStorage.setItem('G', JSON.stringify(timesSelectedG));
         localStorage.setItem('PG', JSON.stringify(timesSelectedPG));
         localStorage.setItem('PG-13', JSON.stringify(timesSelectedPG13));
         localStorage.setItem('R', JSON.stringify(timesSelectedR));
 
         // remove the old data from before and keep only
-        // the most up to date data in the ratingsData array (used for furture versions of WTBSIW)
+        // the most up to date data in the ratingsData array
+        // (used for furture versions of WTBSIW)
         if (ratingsData.length > 0) { 
             ratingsData.pop()
         }
         ratingsData.push("G: " + timesSelectedG, "PG: " + timesSelectedPG, "PG-13: " + timesSelectedPG13, "R: " + timesSelectedR)
+        
+        // genre variables
+        
+        
+        // when a rating is checked on the page,
+        // increment the value by 1 when the 'Get Movies' button is clicked.
+        // If it has never been checked before,
+        // make the value 1 because it is the first time it was checked
+        
+        
+        // saving the genre data to localStorage
+
+
+        // remove the old data from before and keep only
+        // the most up to date data in the ratingsData array
+        // (used for furture versions of WTBSIW)
+
     }
     incrementCollectedData();
     console.log(ratingsData);
 });
+// // genre element variables
+// // This will be used in further iterations of the application
+// var Action = document.getElementById("28");
+// var Adventure = document.getElementById("12");
+// var animation = document.getElementById("16");
+// var Comedy = document.getElementById("35");
+// var Crime = document.getElementById("80");
+// var Documentary = document.getElementById("99");
+// var Drama = document.getElementById("18");
+// var Family = document.getElementById("10751");
+// var Fantasy = document.getElementById("14");
+// var history = document.getElementById("36");
+// var Horror = document.getElementById("27");
+// var Music = document.getElementById("10402");
+// var Mystery = document.getElementById("9648");
+// var Romance = document.getElementById("10749");
+// var ScienceFiction = document.getElementById("878");
+// var Thriller = document.getElementById("53");
+// var War = document.getElementById("10752");
+// var Western = document.getElementById("37");
+
+
 // watchmode API
 
 function getSources() {
