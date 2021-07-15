@@ -11,8 +11,22 @@
     <title>What to Watch Tonight...</title>
 </head>
 <body>
-    <div id="myData">
-        
+    <div class="row">
+        <div class="col s3">
+            <label for="movie-title-search" class="red-text">Search here to find streaming services that offer the movie you're searching for:</label>
+            <input type="search" id="title-search" aria-label="Search Watchmode for Content">
+            <button id="movie-submit-btn" class="btn pulse">Where Can I Watch This Movie?</button>
+        </div>
+        <div class="col s9">
+            <div class="card blue-grey darken-1">
+                <div class="card-content white-text">
+                    <span class="card-title">Where to Watch:</span>
+                    <ol id="streamingServices" class="collection"></ol>
+                    <h5 id="noResults"></h5>
+                </div>
+                <div class="card-action"></div>
+            </div>
+        </div>
     </div>
     <div>
         <form action="#">
@@ -168,24 +182,6 @@
             </div>
         </form>
     </div>
-    <a href=""></a>
-        <div class="row">
-            <div class="col s3">
-                <label for="movie-title-search" class="red-text">Search here to find streaming services that offer the movie you're searching for:</label>
-                <input type="search" id="title-search" aria-label="Search Watchmode for Content">
-                <button id="movie-submit-btn" class="btn pulse">Where Can I Watch This Movie?</button>
-            </div>
-            <div class="col s9">
-                <div class="card blue-grey darken-1">
-                    <div class="card-content white-text">
-                        <span class="card-title">Where to Watch:</span>
-                        <ol id="streamingServices" class="collection"></ol>
-                        <h5 id="noResults"></h5>
-                    </div>
-                    <div class="card-action"></div>
-                </div>
-            </div>
-        </div>
         <div class='ssContainer'>
             <h4 class="collection-header">Recommended Movies</h4>
             <ol id='movieContainer' class="collection"></ol>
