@@ -103,9 +103,8 @@ var resetMovieList = function() {
 // retrieve and display movies when the button is clicked
 document.getElementById("getMovies").addEventListener("click", getMovies);
 
-// collect input data and save it into local storage
-ratingsData = [];
-genresData = [];
+
+// SAVING DATA TO LOCAL STORAGE // SAVING DATA TO LOCAL STORAGE //
 
 // rating element variables
 var ratedG = document.getElementById("G")
@@ -133,9 +132,14 @@ var Thriller = document.getElementById("53");
 var War = document.getElementById("10752");
 var Western = document.getElementById("37");
 
+// collect input data and save it into local storage
+ratingsData = [];
+genresData = [];
+
 document.getElementById("getMovies").addEventListener("click", function(event) { 
     event.preventDefault();
     var incrementCollectedData = function() { 
+        debugger
 
         // ratings variables
         var timesSelectedG = JSON.parse(localStorage.getItem('G'));
@@ -197,24 +201,24 @@ document.getElementById("getMovies").addEventListener("click", function(event) {
         
         
         // genre variables
-        var timesSelectedAction = JSON.parse(localStorage.getItem('28'));
-        var timesSelectedAdventure = JSON.parse(localStorage.getItem('12'));
-        var timesSelectedAnimation = JSON.parse(localStorage.getItem('16'));
-        var timesSelectedComedy = JSON.parse(localStorage.getItem('35'));
-        var timesSelectedCrime = JSON.parse(localStorage.getItem('80'));
-        var timesSelectedDocumentary = JSON.parse(localStorage.getItem('99'));
-        var timesSelectedDrama = JSON.parse(localStorage.getItem('18'));
-        var timesSelectedFamily = JSON.parse(localStorage.getItem('10751'));
-        var timesSelectedFantasy = JSON.parse(localStorage.getItem('14'));
-        var timesSelectedHistory = JSON.parse(localStorage.getItem('36'));
-        var timesSelectedHorror = JSON.parse(localStorage.getItem('27'));
-        var timesSelectedMusic = JSON.parse(localStorage.getItem('10402'));
-        var timesSelectedMystery = JSON.parse(localStorage.getItem('9648'));
-        var timesSelectedRomance = JSON.parse(localStorage.getItem('10749'));
-        var timesSelectedScienceFiction = JSON.parse(localStorage.getItem('878'));
-        var timesSelectedThriller = JSON.parse(localStorage.getItem('53'));
-        var timesSelectedWar = JSON.parse(localStorage.getItem('10752'));
-        var timesSelectedWestern = JSON.parse(localStorage.getItem('37'));
+        var timesSelectedAction = JSON.parse(localStorage.getItem('Action'));
+        var timesSelectedAdventure = JSON.parse(localStorage.getItem('Adventure'));
+        var timesSelectedAnimation = JSON.parse(localStorage.getItem('Animation'));
+        var timesSelectedComedy = JSON.parse(localStorage.getItem('Comedy'));
+        var timesSelectedCrime = JSON.parse(localStorage.getItem('Crime'));
+        var timesSelectedDocumentary = JSON.parse(localStorage.getItem('Documentary'));
+        var timesSelectedDrama = JSON.parse(localStorage.getItem('Drama'));
+        var timesSelectedFamily = JSON.parse(localStorage.getItem('Family'));
+        var timesSelectedFantasy = JSON.parse(localStorage.getItem('Fantasy'));
+        var timesSelectedHistory = JSON.parse(localStorage.getItem('History'));
+        var timesSelectedHorror = JSON.parse(localStorage.getItem('Horror'));
+        var timesSelectedMusic = JSON.parse(localStorage.getItem('Music'));
+        var timesSelectedMystery = JSON.parse(localStorage.getItem('Mystery'));
+        var timesSelectedRomance = JSON.parse(localStorage.getItem('Romance'));
+        var timesSelectedScienceFiction = JSON.parse(localStorage.getItem('Science Fiction'));
+        var timesSelectedThriller = JSON.parse(localStorage.getItem('Thriller'));
+        var timesSelectedWar = JSON.parse(localStorage.getItem('War'));
+        var timesSelectedWestern = JSON.parse(localStorage.getItem('Western'));
         
         // if genre selected, increment counter
         if (Action.checked) {
@@ -392,8 +396,9 @@ document.getElementById("getMovies").addEventListener("click", function(event) {
         )
     }
 
-    incrementCollectedData();
+    console.log(ratingsData);
     console.log(genresData);
+    incrementCollectedData();
 });
 
 // // genre element variables
