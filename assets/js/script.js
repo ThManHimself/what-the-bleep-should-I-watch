@@ -107,7 +107,7 @@ var displayRecommendations = function () {
         // create a li element to hold movie name
         var titleEl = document.createElement("li");
         // add Materialize styling to li
-        titleEl.classList = "collection-item"
+        titleEl.classList = "collection-item black-text"
         // format movie name
         var movieName = movieList[i].title;
 
