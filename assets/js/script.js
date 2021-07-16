@@ -400,27 +400,6 @@ document.getElementById("getMovies").addEventListener("click", function(event) {
     incrementCollectedData();
 });
 
-// // genre element variables
-// // This will be used in further iterations of the application
-// var Action = document.getElementById("28");
-// var Adventure = document.getElementById("12");
-// var animation = document.getElementById("16");
-// var Comedy = document.getElementById("35");
-// var Crime = document.getElementById("80");
-// var Documentary = document.getElementById("99");
-// var Drama = document.getElementById("18");
-// var Family = document.getElementById("10751");
-// var Fantasy = document.getElementById("14");
-// var history = document.getElementById("36");
-// var Horror = document.getElementById("27");
-// var Music = document.getElementById("10402");
-// var Mystery = document.getElementById("9648");
-// var Romance = document.getElementById("10749");
-// var ScienceFiction = document.getElementById("878");
-// var Thriller = document.getElementById("53");
-// var War = document.getElementById("10752");
-// var Western = document.getElementById("37");
-
 
 // watchmode API
 
