@@ -4,7 +4,6 @@ const streamingUrl = "https://watchmode.p.rapidapi.com/list-titles/";
 const base_url = "http://api.themoviedb.org/3/";
 const images_url = "http://image.tmdb.org/t/p/";
 
-
 // TMDB API
 
 var movieContainerEl = document.getElementById("movieContainer");
@@ -38,13 +37,13 @@ var ratedR = document.getElementById("R")
 
 let movieList = [];
 
-var selectedRatings = function() { 
-    
+var selectedRatings = function () {
+
     var ratingArr = [];
     var checkboxes = document.getElementsByClassName('ratingCheckbox')
-    
-    for (var i = 0; i < checkboxes.length; i++) { 
-        if (checkboxes[i].checked) { 
+
+    for (var i = 0; i < checkboxes.length; i++) {
+        if (checkboxes[i].checked) {
             ratingArr.push(checkboxes[i].id);
             console.log(checkboxes[i].id);
         }
@@ -56,17 +55,17 @@ var selectedRatings = function() {
 };
 
 var selectedGenres = function () {
-    
+
     var genreArr = [];
     var checkboxes = document.getElementsByClassName('genreCheckbox')
 
-    for (var i = 0; i < checkboxes.length; i++) { 
-        if (checkboxes[i].checked) { 
+    for (var i = 0; i < checkboxes.length; i++) {
+        if (checkboxes[i].checked) {
             genreArr.push(checkboxes[i].id);
             console.log(checkboxes[i].id);
         }
     }
-    
+
     var genreIds = genreArr.join(',')
     console.log(genreIds);
     return genreIds;
@@ -78,43 +77,43 @@ var getMovies = function (pageNum = 1) {
     const rating = selectedRatings();
     const genre = selectedGenres();
     fetch(`${base_url}discover/movie?api_key=${movieAPIKey}&page=${pageNum}&with_genres=${genre}&certification_country=US&certification=${rating}`)
-    .then((response) => response.json())
-    .then(function (response) {
-        // localStorage.setItem(response)
-        console.log(response);
-        // check if api returned any movies
-        if (response.results == 0) { 
-            movieContainerEl.textContent = "No movies fit your search parameters!";
-            return;
-        }
-        for (var i = 0; i < 10; i++) {
-            var selectedMovie = response.results[i];
-            
-            // add 'selectedMovie to movieList array
-            movieList.push(selectedMovie)
-            console.log(movieList);
-        }
-        displayRecommendations();
-    });
+        .then((response) => response.json())
+        .then(function (response) {
+            // localStorage.setItem(response)
+            console.log(response);
+            // check if api returned any movies
+            if (response.results == 0) {
+                movieContainerEl.textContent = "No movies fit your search parameters!";
+                return;
+            }
+            for (var i = 0; i < 10; i++) {
+                var selectedMovie = response.results[i];
+
+                // add 'selectedMovie to movieList array
+                movieList.push(selectedMovie)
+                console.log(movieList);
+            }
+            displayRecommendations();
+        });
 };
 
-var displayRecommendations = function() { 
+var displayRecommendations = function () {
     // clear content from last search
     movieContainerEl.textContent = "";
 
-    
+
     // create and append li element to ol
-    for (var i = 0; i < movieList.length; i++) { 
+    for (var i = 0; i < movieList.length; i++) {
         // create a li element to hold movie name
         var titleEl = document.createElement("li");
         // add Materialize styling to li
         titleEl.classList = "collection-item"
         // format movie name
         var movieName = movieList[i].title;
-        
+
         // put movie name into li element
         titleEl.textContent = movieName;
-        
+
         // append li to ol container
         movieContainerEl.appendChild(titleEl)
     }
@@ -122,8 +121,8 @@ var displayRecommendations = function() {
 
 // removes all items from movieList to get a fresh search, 
 // used in getMovies so the user does not need to refresh to remove the displayed movies from a previous search
-var resetMovieList = function() { 
-    while (movieList.length) { 
+var resetMovieList = function () {
+    while (movieList.length) {
         movieList.pop();
     }
 }
@@ -132,40 +131,40 @@ var resetMovieList = function() {
 document.getElementById("getMovies").addEventListener("click", getMovies);
 // collect input data and save it into local storage
 var ratingsData = [];
-document.getElementById("getMovies").addEventListener("click", function(event) { 
+document.getElementById("getMovies").addEventListener("click", function (event) {
     event.preventDefault();
-    var incrementCollectedData = function() { 
+    var incrementCollectedData = function () {
         var timesSelectedG = JSON.parse(localStorage.getItem('G'));
         var timesSelectedPG = JSON.parse(localStorage.getItem('PG'));
         var timesSelectedPG13 = JSON.parse(localStorage.getItem('PG-13'));
         var timesSelectedR = JSON.parse(localStorage.getItem('R'));
 
         // ratings
-        if (ratedG.checked) { 
-            if (timesSelectedG == null) { 
+        if (ratedG.checked) {
+            if (timesSelectedG == null) {
                 timesSelectedG = 1;
-            } else { 
+            } else {
                 timesSelectedG++;
             }
         }
-        if (ratedPG.checked) { 
-            if (timesSelectedPG == null) { 
+        if (ratedPG.checked) {
+            if (timesSelectedPG == null) {
                 timesSelectedPG = 1;
-            } else { 
+            } else {
                 timesSelectedPG++;
             }
         }
-        if (ratedPG13.checked) { 
-            if (timesSelectedPG13 == null) { 
+        if (ratedPG13.checked) {
+            if (timesSelectedPG13 == null) {
                 timesSelectedPG13 = 1;
-            } else { 
+            } else {
                 timesSelectedPG13++;
             }
         }
-        if (ratedR.checked) { 
-            if (timesSelectedR == null) { 
+        if (ratedR.checked) {
+            if (timesSelectedR == null) {
                 timesSelectedR = 1;
-            } else { 
+            } else {
                 timesSelectedR++;
             }
         }
@@ -178,7 +177,7 @@ document.getElementById("getMovies").addEventListener("click", function(event) {
 
         // remove the old data from before and keep only
         // the most up to date data in the ratingsData array (used for furture versions of WTBSIW)
-        if (ratingsData.length > 0) { 
+        if (ratingsData.length > 0) {
             ratingsData.pop()
         }
         ratingsData.push("G: " + timesSelectedG, "PG: " + timesSelectedPG, "PG-13: " + timesSelectedPG13, "R: " + timesSelectedR)
@@ -205,12 +204,12 @@ function getSources() {
             "x-rapidapi-host": "watchmode.p.rapidapi.com",
         },
     })
-    .then((response) => {
-        console.log(response);
-    })
-    .catch((err) => {
-        console.error(err);
-    });
+        .then((response) => {
+            console.log(response);
+        })
+        .catch((err) => {
+            console.error(err);
+        });
 }
 
 async function getEntertainmentStreamData(query, type) {
@@ -227,12 +226,12 @@ async function getEntertainmentStreamData(query, type) {
             },
         }
     )
-    .then((response) => {
-        return response.json();
-    })
-    .catch((err) => {
-        console.error(err);
-    });
+        .then((response) => {
+            return response.json();
+        })
+        .catch((err) => {
+            console.error(err);
+        });
     console.log("got the id successfully", response);
     console.log(response);
     let id = response["title_results"][0].id;
@@ -246,28 +245,28 @@ async function getEntertainmentStreamData(query, type) {
             "x-rapidapi-host": "watchmode.p.rapidapi.com",
         },
     })
-    .then((response) => {
-        return response.json();
-    })
-    .catch((err) => {
-        console.error(err);
-    });
+        .then((response) => {
+            return response.json();
+        })
+        .catch((err) => {
+            console.error(err);
+        });
     var webStreamingServices = streamingData
-        .filter(movie=>movie.region=="US")
-        .filter(movie=>movie.type=="sub")
-    
+        .filter(movie => movie.region == "US")
+        .filter(movie => movie.type == "sub")
+
     console.log(webStreamingServices);
     console.log(webStreamingServices[0]);
-    
-    
+
+
     // display streaming services to the page
-    var displaySreamingPlatforms = function() { 
-        
+    var displaySreamingPlatforms = function () {
+
         // if there are no streaming services for searched movie
-        if (!webStreamingServices[0]) { 
+        if (!webStreamingServices[0]) {
             noResults.textContent = "This movie is not on any streaming service. (Check for typos)";
         }
-        
+
         // clear ol from last search
         serviceEl.textContent = "";
 
@@ -292,14 +291,14 @@ async function getEntertainmentStreamData(query, type) {
             // set the href property
             a.href = webStreamingServices[i].web_url;
 
-            
-            
+
+
             // create li to put inside of the ol
             var serviceContainer = document.createElement('li');
             // add Materialize styling to li
             serviceContainer.classList = "collection-item teal";
 
-            
+
 
             // format service url
             var serviceName = webStreamingServices[i].web_url;
@@ -311,7 +310,7 @@ async function getEntertainmentStreamData(query, type) {
 
             // append the anchor element to li
             serviceContainer.appendChild(a);
-            
+
             // append li to div
             serviceEl.appendChild(serviceContainer);
         }
@@ -319,7 +318,7 @@ async function getEntertainmentStreamData(query, type) {
     displaySreamingPlatforms();
 
     // clear inputs in 'where to watch' container
-    while (webStreamingServices.length) { 
+    while (webStreamingServices.length) {
         webStreamingServices.pop();
     }
 }
@@ -334,4 +333,24 @@ document.getElementById("movie-submit-btn").addEventListener("click", function (
     getEntertainmentStreamData(query, tvOrMovie);
 });
 
+// *****************   slideshow background **************** //
 
+const slideshowImages = document.querySelectorAll(".intro-slideshow img");
+
+const nextImageDelay = 3000;
+let currentImageCounter = 0; // setting a variable to keep track of the current image (slide)
+
+// slideshowImages[currentImageCounter].style.display = "block";
+slideshowImages[currentImageCounter].style.opacity = 1;
+
+setInterval(nextImage, nextImageDelay);
+
+function nextImage() {
+    // slideshowImages[currentImageCounter].style.display = "none";
+    slideshowImages[currentImageCounter].style.opacity = 0;
+
+    currentImageCounter = (currentImageCounter + 1) % slideshowImages.length;
+
+    // slideshowImages[currentImageCounter].style.display = "block";
+    slideshowImages[currentImageCounter].style.opacity = 1;
+}
