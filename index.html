@@ -1,199 +1,237 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <!-- Materialize CSS CDN -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
+    />
     <!-- Personal CSS - will override above CDN -->
-    <link rel="stylesheet" href="./assets/css/style.css">
+    <link rel="stylesheet" href="./assets/css/style.css" />
+    <!-- <img
+      src="https://github.com/ThManHimself/what-the-bleep-should-I-watch/blob/vang007-patch-1/why_so_serious.jpg?raw=true"
+      id="bg"
+      alt="" -->
+
+    <header class="intro">
+      <div class="intro-slideshow">
+        <img
+          src="https://github.com/ThManHimself/what-the-bleep-should-I-watch/blob/vang007-patch-1/endgame.jpg?raw=true"
+        />
+        <img
+          src="https://github.com/ThManHimself/what-the-bleep-should-I-watch/blob/vang007-patch-1/episode_7.jpg?raw=true"
+        />
+        <img
+          src="https://github.com/ThManHimself/what-the-bleep-should-I-watch/blob/vang007-patch-1/F9_history.jpg?raw=true"
+        />
+        <img
+          src="https://github.com/ThManHimself/what-the-bleep-should-I-watch/blob/vang007-patch-1/simba.jpg?raw=true"
+        />
+        <img
+          src="https://github.com/ThManHimself/what-the-bleep-should-I-watch/blob/vang007-patch-1/jack_rose.jpg?raw=true"
+        />
+      </div>
+      <div class="intro-header">
+        <h1>WhatTheBleep</h1>
+        <p>Should I Watch?</p>
+      </div>
+    </header>
     <title>What to Watch Tonight...</title>
-</head>
-<body>
-    <div id="myData">
-        
-    </div>
+  </head>
+  <body>
+    <div id="myData"></div>
     <div>
-        <form action="#">
-            <div class="container">
-                <h3>Please Select the Ratings you are open to watching:(SELECT ONE)</h3>
-                <div id="rating-container" class="row">
-                    <p class="col s3">
-                        <label>
-                            <input id="G" class="ratingCheckbox" type="checkbox" />
-                            <span>G</span>
-                        </label>
-                    </p>
-                    <p class="col s3">
-                        <label>
-                            <input id="PG" class="ratingCheckbox" type="checkbox" />
-                            <span>PG</span>
-                        </label>
-                    </p>
-                    <p class="col s3">
-                        <label>
-                            <input id="PG-13" class="ratingCheckbox" type="checkbox" />
-                            <span>PG-13</span>
-                        </label>
-                    </p>
-                    <p class="col s3">
-                        <label>
-                            <input id="R" class="ratingCheckbox" type="checkbox" />
-                            <span>R</span>
-                        </label>
-                    </p>
-                </div>
-            </div>
-            <!-- Genre section -->
-            <div class="container">
-                <h3>Please Choose your genre:</h3>
-                <div class="row">
-                    <p class="col s2">
-                        <label>
-                            <input id="28" class="genreCheckbox" type="checkbox" />
-                            <span>Action</span>
-                        </label>
-                    </p>
-                    <p class="col s2">
-                        <label>
-                            <input id="12" class="genreCheckbox" type="checkbox" />
-                            <span>Adventure</span>
-                        </label>
-                    </p>
-                    <p class="col s2">
-                        <label>
-                            <input id="16" class="genreCheckbox" type="checkbox" />
-                            <span>Animation</span>
-                        </label>
-                    </p>
-                    <p class="col s2">
-                        <label>
-                            <input id="35" class="genreCheckbox" type="checkbox" />
-                            <span>Comedy</span>
-                        </label>
-                    </p>
-                    <p class="col s2">
-                        <label>
-                            <input id="80" class="genreCheckbox" type="checkbox" />
-                            <span>Crime</span>
-                        </label>
-                    </p>
-                    <p class="col s2">
-                        <label>
-                            <input id="99" class="genreCheckbox" type="checkbox" />
-                            <span>Documentary</span>
-                        </label>
-                    </p>
-                </div>
+      <form action="#">
+        <div class="container">
+          <h3>Please Select One Rating:</h3>
+          <div id="rating-container" class="row">
+            <p class="col s3">
+              <label>
+                <input id="G" class="ratingCheckbox" type="checkbox" />
+                <span>G</span>
+              </label>
+            </p>
+            <p class="col s3">
+              <label>
+                <input id="PG" class="ratingCheckbox" type="checkbox" />
+                <span>PG</span>
+              </label>
+            </p>
+            <p class="col s3">
+              <label>
+                <input id="PG-13" class="ratingCheckbox" type="checkbox" />
+                <span>PG-13</span>
+              </label>
+            </p>
+            <p class="col s3">
+              <label>
+                <input id="R" class="ratingCheckbox" type="checkbox" />
+                <span>R</span>
+              </label>
+            </p>
+          </div>
+        </div>
+        <!-- Genre section -->
+        <div class="container">
+          <h3>Please Choose your genre:</h3>
+          <div class="row">
+            <p class="col s2">
+              <label>
+                <input id="28" class="genreCheckbox" type="checkbox" />
+                <span>Action</span>
+              </label>
+            </p>
+            <p class="col s2">
+              <label>
+                <input id="12" class="genreCheckbox" type="checkbox" />
+                <span>Adventure</span>
+              </label>
+            </p>
+            <p class="col s2">
+              <label>
+                <input id="16" class="genreCheckbox" type="checkbox" />
+                <span>Animation</span>
+              </label>
+            </p>
+            <p class="col s2">
+              <label>
+                <input id="35" class="genreCheckbox" type="checkbox" />
+                <span>Comedy</span>
+              </label>
+            </p>
+            <p class="col s2">
+              <label>
+                <input id="80" class="genreCheckbox" type="checkbox" />
+                <span>Crime</span>
+              </label>
+            </p>
+            <p class="col s2">
+              <label>
+                <input id="99" class="genreCheckbox" type="checkbox" />
+                <span>Documentary</span>
+              </label>
+            </p>
+          </div>
 
-                <div class="row">
-                    <p class="col s2">
-                        <label>
-                            <input id="18" class="genreCheckbox" type="checkbox" />
-                            <span>Drama</span>
-                        </label>
-                    </p>
-                    <p class="col s2">
-                        <label>
-                            <input id="10751" class="genreCheckbox" type="checkbox" />
-                            <span>Family</span>
-                        </label>
-                    </p>
-                    <p class="col s2">
-                        <label>
-                            <input id="14" class="genreCheckbox" type="checkbox" />
-                            <span>Fantasy</span>
-                        </label>
-                    </p>
-                    <p class="col s2">
-                        <label>
-                            <input id="36" class="genreCheckbox" type="checkbox" />
-                            <span>History</span>
-                        </label>
-                    </p>
-                    <p class="col s2">
-                        <label>
-                            <input id="27" class="genreCheckbox" type="checkbox" />
-                            <span>Horror</span>
-                        </label>
-                    </p>
-                    <p class="col s2">
-                        <label>
-                            <input id="10402" class="genreCheckbox" type="checkbox" />
-                            <span>Music</span>
-                        </label>
-                    </p>
-                </div>
+          <div class="row">
+            <p class="col s2">
+              <label>
+                <input id="18" class="genreCheckbox" type="checkbox" />
+                <span>Drama</span>
+              </label>
+            </p>
+            <p class="col s2">
+              <label>
+                <input id="10751" class="genreCheckbox" type="checkbox" />
+                <span>Family</span>
+              </label>
+            </p>
+            <p class="col s2">
+              <label>
+                <input id="14" class="genreCheckbox" type="checkbox" />
+                <span>Fantasy</span>
+              </label>
+            </p>
+            <p class="col s2">
+              <label>
+                <input id="36" class="genreCheckbox" type="checkbox" />
+                <span>History</span>
+              </label>
+            </p>
+            <p class="col s2">
+              <label>
+                <input id="27" class="genreCheckbox" type="checkbox" />
+                <span>Horror</span>
+              </label>
+            </p>
+            <p class="col s2">
+              <label>
+                <input id="10402" class="genreCheckbox" type="checkbox" />
+                <span>Music</span>
+              </label>
+            </p>
+          </div>
 
-                <div class="row">
-                    <p class="col s2">
-                        <label>
-                            <input id="9648" class="genreCheckbox" type="checkbox" />
-                            <span>Mystery</span>
-                        </label>
-                    </p>
-                    <p class="col s2">
-                        <label>
-                            <input id="10749" class="genreCheckbox" type="checkbox" />
-                            <span>Romance</span>
-                        </label>
-                    </p>
-                    <p class="col s2">
-                        <label>
-                            <input id="878" class="genreCheckbox" type="checkbox" />
-                            <span>Science Fiction</span>
-                        </label>
-                    </p>
-                    <p class="col s2">
-                        <label>
-                            <input id="53" class="genreCheckbox" type="checkbox" />
-                            <span>Thriller</span>
-                        </label>
-                    </p>
-                    <p class="col s2">
-                        <label>
-                            <input id="10752" class="genreCheckbox" type="checkbox" />
-                            <span>War</span>
-                        </label>
-                    </p>
-                    <p class="col s2">
-                        <label>
-                            <input id="37" class="genreCheckbox" type="checkbox" />
-                            <span>Western</span>
-                        </label>
-                    </p>
-                </div>
-                <button id="getMovies" class="btn pulse">Get Movies</button>
-            </div>
-        </form>
+          <div class="row">
+            <p class="col s2">
+              <label>
+                <input id="9648" class="genreCheckbox" type="checkbox" />
+                <span>Mystery</span>
+              </label>
+            </p>
+            <p class="col s2">
+              <label>
+                <input id="10749" class="genreCheckbox" type="checkbox" />
+                <span>Romance</span>
+              </label>
+            </p>
+            <p class="col s2">
+              <label>
+                <input id="878" class="genreCheckbox" type="checkbox" />
+                <span>Science Fiction</span>
+              </label>
+            </p>
+            <p class="col s2">
+              <label>
+                <input id="53" class="genreCheckbox" type="checkbox" />
+                <span>Thriller</span>
+              </label>
+            </p>
+            <p class="col s2">
+              <label>
+                <input id="10752" class="genreCheckbox" type="checkbox" />
+                <span>War</span>
+              </label>
+            </p>
+            <p class="col s2">
+              <label>
+                <input id="37" class="genreCheckbox" type="checkbox" />
+                <span>Western</span>
+              </label>
+            </p>
+          </div>
+          <button id="getMovies" class="btn pulse">Get Movies</button>
+        </div>
+      </form>
     </div>
     <a href=""></a>
-        <div class="row">
-            <div class="col s3">
-                <label for="movie-title-search" class="red-text">Search here to find streaming services that offer the movie you're searching for:</label>
-                <input type="search" id="title-search" aria-label="Search Watchmode for Content">
-                <button id="movie-submit-btn" class="btn pulse">Where Can I Watch This Movie?</button>
-            </div>
-            <div class="col s9">
-                <div class="card blue-grey darken-1">
-                    <div class="card-content white-text">
-                        <span class="card-title">Where to Watch:</span>
-                        <ol id="streamingServices" class="collection"></ol>
-                        <h5 id="noResults"></h5>
-                    </div>
-                    <div class="card-action"></div>
-                </div>
-            </div>
+    <div class="row">
+      <div class="col s3">
+        <label for="movie-title-search" class="red-text"
+          >Search here to find streaming services that offer the movie you're
+          searching for:</label
+        >
+        <input
+          type="search"
+          id="title-search"
+          aria-label="Search Watchmode for Content"
+        />
+        <button id="movie-submit-btn" class="btn pulse">
+          Where Can I Watch This Movie?
+        </button>
+      </div>
+      <div class="col s9">
+        <div class="card blue-grey darken-1">
+          <div class="card-content white-text">
+            <span class="card-title">Where to Watch:</span>
+            <ol id="streamingServices" class="collection"></ol>
+            <h5 id="noResults"></h5>
+          </div>
+          <div class="card-action"></div>
         </div>
-        <div class='ssContainer'>
-            <h4 class="collection-header">Recommended Movies</h4>
-            <ol id='movieContainer' class="collection"></ol>
-        </div>
-    
+      </div>
+    </div>
+    <div class="ssContainer">
+      <h4 class="collection-header">Recommended Movies</h4>
+      <ol id="movieContainer" class="collection"></ol>
+    </div>
+
     <!-- <script src="./assets/js/key/key.js"></script> -->
     <script src="./assets/js/script.js"></script>
     <!-- Materialize JavaScript CDN -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-</body>
+  </body>
 </html>
