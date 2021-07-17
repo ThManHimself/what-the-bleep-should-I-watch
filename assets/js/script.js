@@ -138,6 +138,7 @@ async function getEntertainmentStreamData(query, type) {
     console.log(streamingData.filter(movie=>movie.region.toLowerCase()=="us"));
 }
 
+<<<<<<< HEAD
 document.getElementById("movie-submit-btn").addEventListener("click", function (e) {
         e.preventDefault();
         console.log("i been clicked");
@@ -147,3 +148,57 @@ document.getElementById("movie-submit-btn").addEventListener("click", function (
 
         getEntertainmentStreamData(query, tvOrMovie);
     });
+=======
+// ------------------------------------------------------------------
+
+// ------------------------------------------------------------------
+
+
+
+// ------------------------------------------------------------------
+
+// ------------------------------------------------------------------
+
+
+
+// ------------------------------------------------------------------
+
+// ------------------------------------------------------------------
+
+
+
+// ------------------------------------------------------------------
+
+// ------------------------------------------------------------------
+
+
+
+// ------------------------------------------------------------------
+
+
+// ------------------------------------------------------------------
+
+
+
+// ------------------------------------------------------------------
+
+// ------------------------------------------------------------------
+
+
+
+// ------------------------------------------------------------------
+
+// ------------------------------------------------------------------
+// document.addEventListener('DOMContentLoaded', getConfig);
+// ------------------------------------------------------------------
+document.getElementById("movie-submit-btn").addEventListener("click", function(e) {
+    e.preventDefault();
+    console.log('i been clicked')
+    let query ="rocky"; //grab actual value from form
+    let tvOrMovie = "movie"; //grab actual value from form
+
+    getEntertainmentStreamData(query, tvOrMovie);
+
+});
+document.querySelector().value
+>>>>>>> feature/rating-api
