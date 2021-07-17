@@ -468,8 +468,67 @@ async function getEntertainmentStreamData(query, type) {
     console.log(webURL.value);
 }
 
+// display streaming services to the page
 var displaySreamingPlatforms = function() { 
-    var availablePlatforms = searchInputEl.value
+        
+    // if there are no streaming services for searched movie
+    if (!webStreamingServices[0]) { 
+        noResults.textContent = "This movie is not on any streaming service. (Check for typos)";
+    }
+    
+    // clear ol from last search
+    serviceEl.textContent = "";
+
+    for (var i = 0; i < webStreamingServices.length; i++) {
+
+        // clear 'noResults'
+        noResults.textContent = "";
+
+        // create anchor element
+        var a = document.createElement('a');
+        a.classList = "white-text"
+
+        // create the text for anchor element
+        var link = document.createTextNode("This is link");
+
+        // append the text node to anchor element
+        a.appendChild(link);
+
+        // set the title
+        a.title = "This is Link";
+
+        // set the href property
+        a.href = webStreamingServices[i].web_url;
+
+        
+        
+        // create li to put inside of the ol
+        var serviceContainer = document.createElement('li');
+        // add Materialize styling to li
+        serviceContainer.classList = "collection-item teal";
+
+        
+
+        // format service url
+        var serviceName = webStreamingServices[i].web_url;
+
+        // put service url into li
+        a.textContent = serviceName;
+
+
+
+        // append the anchor element to li
+        serviceContainer.appendChild(a);
+        
+        // append li to div
+        serviceEl.appendChild(serviceContainer);
+    }
+    displaySreamingPlatforms();
+    
+    // clear inputs in 'where to watch' container
+    while (webStreamingServices.length) { 
+        webStreamingServices.pop();
+    }
 }
 
 
@@ -481,5 +540,4 @@ document.getElementById("movie-submit-btn").addEventListener("click", function (
     let tvOrMovie = "movie"; //grab actual value from form
     getEntertainmentStreamData(query, tvOrMovie);
 });
-
 
