@@ -114,3 +114,21 @@ function displayGenreChoices() {
 "order": 5
 }
 ],
+
+
+var displaySreamingPlatforms = function() { 
+    for (var i = 0; i < movieList.length; i++) { 
+        // create a span element to hold movie name
+        var titleEl = document.createElement("li");
+        // add Materialize styling to li
+        titleEl.classList = "collection-item"
+        // formnat movie name
+        var movieName = movieList[i].title;
+        
+        // put movie name into li element
+        titleEl.textContent = movieName;
+        
+        // append li to ol container
+        movieContainerEl.appendChild(titleEl)
+    }
+}
