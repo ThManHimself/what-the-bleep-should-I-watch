@@ -523,8 +523,8 @@ var displaySreamingPlatforms = function() {
         // append li to div
         serviceEl.appendChild(serviceContainer);
     }
-    displaySreamingPlatforms();
-    
+    displayStreamingPlatforms();
+
     // clear inputs in 'where to watch' container
     while (webStreamingServices.length) { 
         webStreamingServices.pop();
