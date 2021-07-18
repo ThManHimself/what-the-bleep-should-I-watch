@@ -469,7 +469,7 @@ async function getEntertainmentStreamData(query, type) {
 }
 
 // display streaming services to the page
-var displaySreamingPlatforms = function() { 
+var displayStreamingPlatforms = function() { 
         
     // if there are no streaming services for searched movie
     if (!webStreamingServices[0]) { 
@@ -523,8 +523,8 @@ var displaySreamingPlatforms = function() {
         // append li to div
         serviceEl.appendChild(serviceContainer);
     }
-    displaySreamingPlatforms();
-    
+    displayStreamingPlatforms();
+
     // clear inputs in 'where to watch' container
     while (webStreamingServices.length) { 
         webStreamingServices.pop();
