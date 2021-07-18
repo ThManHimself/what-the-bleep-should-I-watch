@@ -256,7 +256,6 @@ async function getEntertainmentStreamData(query, type) {
         .filter(movie=>movie.region=="US")
         .filter(movie=>movie.type=="sub")
     
-    console.log(webStreamingServices);
     console.log(webStreamingServices[0]);
     
     
