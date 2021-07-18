@@ -81,7 +81,7 @@ var displayRecommendations = function() {
         // create a li element to hold movie name
         var titleEl = document.createElement("li");
         // add Materialize styling to li
-        titleEl.classList = "collection-item"
+        titleEl.classList = "collection-item black-text"
         // format movie name
         var movieName = movieList[i].title;
         
@@ -403,6 +403,11 @@ document.getElementById("getMovies").addEventListener("click", function(event) {
 
 // watchmode API
 
+var searchInputEl = document.getElementById("title-search");
+var serviceEl = document.getElementById("streamingServices");
+var noResults = document.getElementById("noResults")
+
+
 function getSources() {
     fetch("https://watchmode.p.rapidapi.com/title/3173903/sources/", {
         method: "GET",
@@ -442,6 +447,7 @@ async function getEntertainmentStreamData(query, type) {
         console.error(err);
     });
     console.log("got the id successfully", response);
+    console.log(response);
     let id = response["title_results"][0].id;
     let newURL = `https://watchmode.p.rapidapi.com/title/${id}/sources/`;
     const streamingData = await fetch(newURL, {
@@ -459,69 +465,68 @@ async function getEntertainmentStreamData(query, type) {
     .catch((err) => {
         console.error(err);
     });
-    var streamingServicesUS = streamingData
+    var webStreamingServices = streamingData
         .filter(movie=>movie.region=="US")
         .filter(movie=>movie.type=="sub")
-        console.log(streamingServicesUS);
-    var webURL = streamingServicesUS
-        .filter(movie=>movie.web_url)
-    console.log(webURL.value);
-}
-
-// display streaming services to the page
-var displayStreamingPlatforms = function() { 
-        
-    // if there are no streaming services for searched movie
-    if (!webStreamingServices[0]) { 
-        noResults.textContent = "This movie is not on any streaming service. (Check for typos)";
-    }
     
-    // clear ol from last search
-    serviceEl.textContent = "";
-
-    for (var i = 0; i < webStreamingServices.length; i++) {
-
-        // clear 'noResults'
-        noResults.textContent = "";
-
-        // create anchor element
-        var a = document.createElement('a');
-        a.classList = "white-text"
-
-        // create the text for anchor element
-        var link = document.createTextNode("This is link");
-
-        // append the text node to anchor element
-        a.appendChild(link);
-
-        // set the title
-        a.title = "This is Link";
-
-        // set the href property
-        a.href = webStreamingServices[i].web_url;
-
+    console.log(webStreamingServices[0]);
+    
+    
+    // display streaming services to the page
+    var displayStreamingPlatforms = function() { 
         
+        // if there are no streaming services for searched movie
+        if (!webStreamingServices[0]) { 
+            noResults.textContent = "This movie is not on any streaming service. (Check for typos)";
+        }
         
-        // create li to put inside of the ol
-        var serviceContainer = document.createElement('li');
-        // add Materialize styling to li
-        serviceContainer.classList = "collection-item teal";
+        // clear ol from last search
+        serviceEl.textContent = "";
 
-        
+        for (var i = 0; i < webStreamingServices.length; i++) {
 
-        // format service url
-        var serviceName = webStreamingServices[i].web_url;
+            // clear 'noResults'
+            noResults.textContent = "";
 
-        // put service url into li
-        a.textContent = serviceName;
+            // create anchor element
+            var a = document.createElement('a');
+            a.classList = "white-text"
+
+            // create the text for anchor element
+            var link = document.createTextNode("This is link");
+
+            // append the text node to anchor element
+            a.appendChild(link);
+
+            // set the title
+            a.title = "This is Link";
+
+            // set the href property
+            a.href = webStreamingServices[i].web_url;
+
+            
+            
+            // create li to put inside of the ol
+            var serviceContainer = document.createElement('li');
+            // add Materialize styling to li
+            serviceContainer.classList = "collection-item teal";
+
+            
+
+            // format service url
+            var serviceName = webStreamingServices[i].web_url;
+
+            // put service url into li
+            a.textContent = serviceName;
 
 
 
-        // append the anchor element to li
-        serviceContainer.appendChild(a);
-        
-        // append li to div
-        serviceEl.appendChild(serviceContainer);
+            // append the anchor element to li
+            serviceContainer.appendChild(a);
+            
+            // append li to div
+            serviceEl.appendChild(serviceContainer);
+        }
     }
     displayStreamingPlatforms();
 
