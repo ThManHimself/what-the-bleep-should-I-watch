@@ -1,5 +1,4 @@
 var movieContainerEl = document.getElementById("movieContainer");
-var searchInputEl = document.getElementById("title-search");
 
 const streamingAPIKey = "0e490c0bb2msh27474734de7d723p106e9ajsn139beffcdbea";
 const movieAPIKey = "03af2fad82ab3f23750190542914caf8";
@@ -395,8 +394,6 @@ document.getElementById("getMovies").addEventListener("click", function(event) {
         )
     }
 
-    console.log(ratingsData);
-    console.log(genresData);
     incrementCollectedData();
 });
 
